@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    // sorted alphabetically
+    // Ctrl+Shift+P > Sort Lines Ascending
+
+    "esbenp.prettier-vscode",
+    "hverlin.mise-vscode",
+    "streetsidesoftware.code-spell-checker"
+  ]
+}

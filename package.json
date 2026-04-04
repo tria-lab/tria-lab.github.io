@@ -1,0 +1,16 @@
+{
+  "name": "tria-lab.github.io",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "fmt": "prettier",
+    "fmt:check": "prettier -l ."
+  },
+  "devDependencies": {
+    "@types/bun": "1.3.11",
+    "prettier": "3.8.1"
+  },
+  "peerDependencies": {
+    "typescript": "6.0.2"
+  }
+}
