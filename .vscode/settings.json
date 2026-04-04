@@ -6,6 +6,9 @@
     "mise.lock": true,
     "bun.lock": true
   },
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
 
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -14,6 +17,9 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[typescript]": {
@@ -30,5 +36,5 @@
   },
 
   // extended cSpell dictionary
-  "cSpell.words": ["oxfmt", "tria"]
+  "cSpell.words": ["nextjs", "oxfmt", "sevalla", "tria", "unrs"]
 }

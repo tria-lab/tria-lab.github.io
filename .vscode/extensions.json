@@ -3,6 +3,7 @@
     // sorted alphabetically
     // Ctrl+Shift+P > Sort Lines Ascending
 
+    "bradlc.vscode-tailwindcss",
     "esbenp.prettier-vscode",
     "github.vscode-github-actions",
     "hverlin.mise-vscode",
