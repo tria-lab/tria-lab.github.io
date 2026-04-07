@@ -4,3 +4,49 @@
 @theme {
   --font-sans: "Pretendard GOV Variable";
 }
+
+@theme {
+  /* https://www.hongik.ac.kr/kr/introduction/color.do */
+
+  /* Primary Colors */
+  --color-hongik-medium-blue: #1833db;
+  --color-hongik-midnight-blue: #05014a;
+
+  /* Shade Colors */
+  --color-hongik-bright-gray: #eeeef0;
+  --color-hongik-light-gray: #d0d0d2;
+  --color-hongik-medium-gray: #989a9f;
+  --color-hongik-dark-gray: #53565f;
+  --color-hongik-stone-gray: #313339;
+  --color-hongik-white: #ffffff;
+  --color-hongik-black: #000000;
+
+  /* Highlight Colors: Blue */
+  --color-hongik-navy: #020079;
+  --color-hongik-azure-blue: #0381fe;
+  --color-hongik-mint: #69ebff;
+
+  /* Highlight Colors: Wow */
+  --color-wow-seal-brown: #3a1f04;
+  --color-wow-brick: #99522c;
+  --color-wow-autumn: #d2691e;
+  --color-wow-sand: #c2b280;
+  --color-wow-beige: #f5f5dc;
+  --color-wow-green: #22d979;
+  --color-wow-spring-green: #c2f2d6;
+  --color-wow-golden-yellow: #f3e600;
+  --color-wow-red: #ff4433;
+}
+
+::selection {
+  @apply bg-hongik-azure-blue text-hongik-white;
+}
+
+html,
+body {
+  /*
+    Prevent awkward word wrapping in Korean.
+    See https://www.youtube.com/watch?v=XJl7dYWZlkw
+    */
+  word-break: keep-all;
+}
