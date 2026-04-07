@@ -1,1 +1,6 @@
+@import "pretendard-gov/dist/web/variable/pretendardvariable-gov-dynamic-subset.css";
 @import "tailwindcss";
+
+@theme {
+  --font-sans: "Pretendard GOV Variable";
+}
