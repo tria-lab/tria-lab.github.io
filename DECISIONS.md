@@ -45,6 +45,12 @@ know (even those who do not have to use it). Also,
 [coding LLMs have almost fully internalized the Nextjs API](https://blog.cloudflare.com/vinext/),
 so the AI agents can be used to work on the codebase with high degree of reliability.
 
+## Font
+
+[Pretendard GOV](https://github.com/orioncactus/pretendard/tree/main/packages/pretendard-gov)
+is a clean, modern font supports many different languages including English, Korean, Chinese, and
+Japanese. See https://namu.wiki/w/Pretendard%20GOV for more info.
+
 <!-- Formatter -->
 
 [oxfmt]: https://oxc.rs/docs/guide/usage/formatter.html
