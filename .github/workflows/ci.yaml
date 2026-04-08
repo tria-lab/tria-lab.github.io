@@ -16,3 +16,5 @@ jobs:
       - uses: jdx/mise-action@v3
 
       - run: bun run fmt:check
+
+      - run: bun run lint
