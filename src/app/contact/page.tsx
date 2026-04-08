@@ -41,54 +41,6 @@ export default function Contact() {
           ullamco laboris nisi ut aliquip ex ea commodo consequat.
         </p>
       </section>
-
-      <section className="mb-12">
-        <h2 className="mb-4 text-2xl font-semibold">Contact Form</h2>
-        <form className="space-y-4">
-          <div>
-            <label htmlFor="name" className="mb-1 block text-sm font-medium">
-              Name
-            </label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              className="w-full rounded-md border border-zinc-300 bg-white px-4 py-2"
-              placeholder="Your name"
-            />
-          </div>
-          <div>
-            <label htmlFor="email" className="mb-1 block text-sm font-medium">
-              Email
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              className="w-full rounded-md border border-zinc-300 bg-white px-4 py-2"
-              placeholder="your.email@example.com"
-            />
-          </div>
-          <div>
-            <label htmlFor="message" className="mb-1 block text-sm font-medium">
-              Message
-            </label>
-            <textarea
-              id="message"
-              name="message"
-              rows={5}
-              className="w-full rounded-md border border-zinc-300 bg-white px-4 py-2"
-              placeholder="Your message..."
-            />
-          </div>
-          <button
-            type="submit"
-            className="rounded-md bg-blue-500 px-6 py-2 text-white hover:bg-blue-600"
-          >
-            Send Message
-          </button>
-        </form>
-      </section>
     </div>
   )
 }
