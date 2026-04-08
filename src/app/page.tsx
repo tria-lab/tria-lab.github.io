@@ -3,7 +3,7 @@ export default function Home() {
     <div>
       <section className="mx-auto max-w-4xl px-6 py-24 text-center">
         <h1 className="mb-6 text-5xl font-bold">TRIA Lab</h1>
-        <p className="text-hongik-medium-gray mb-4 text-xl">
+        <p className="mb-4 text-xl text-hongik-medium-gray">
           <strong>
             {/* cSpell: disable-next-line */}
             <span className="text-hongik-dark-gray">TR</span>ustworthy

@@ -53,7 +53,7 @@ export default function Navbar() {
         <div className="mx-auto flex h-full max-w-[1400px] items-center justify-between px-6">
           <Link
             href="/"
-            className="text-hongik-black hover:text-hongik-midnight-blue text-xl font-bold"
+            className="text-xl font-bold text-hongik-black hover:text-hongik-midnight-blue"
           >
             [LOGO] TRIA LAB
             {/* Empty logo */}
@@ -73,7 +73,7 @@ export default function Navbar() {
                   >
                     {link.label}
                     <span
-                      className={`bg-hongik-midnight-blue absolute bottom-0 left-0 h-0.5 transition-all duration-300 ${
+                      className={`absolute bottom-0 left-0 h-0.5 bg-hongik-midnight-blue transition-all duration-300 ${
                         isActive(link.href) ? "w-full" : "w-0 group-hover:w-full"
                       }`}
                     />
@@ -90,17 +90,17 @@ export default function Navbar() {
             aria-expanded={isOpen}
           >
             <span
-              className={`bg-hongik-black block h-0.5 w-6 transition-transform duration-150 ${
+              className={`block h-0.5 w-6 bg-hongik-black transition-transform duration-150 ${
                 isOpen ? "translate-y-2 rotate-45" : ""
               }`}
             />
             <span
-              className={`bg-hongik-black block h-0.5 w-6 transition-opacity duration-150 ${
+              className={`block h-0.5 w-6 bg-hongik-black transition-opacity duration-150 ${
                 isOpen ? "opacity-0" : ""
               }`}
             />
             <span
-              className={`bg-hongik-black block h-0.5 w-6 transition-transform duration-150 ${
+              className={`block h-0.5 w-6 bg-hongik-black transition-transform duration-150 ${
                 isOpen ? "-translate-y-2 -rotate-45" : ""
               }`}
             />
@@ -124,7 +124,7 @@ export default function Navbar() {
           <div className="mb-6 flex justify-end">
             <button
               onClick={() => setIsOpen(false)}
-              className="text-hongik-black hover:text-hongik-midnight-blue text-2xl"
+              className="text-2xl text-hongik-black hover:text-hongik-midnight-blue"
               aria-label="Close menu"
             >
               ×
@@ -138,8 +138,8 @@ export default function Navbar() {
                   onClick={() => setIsOpen(false)}
                   className={`block rounded px-4 py-2 font-medium no-underline transition-colors ${
                     isActive(link.href)
-                      ? "text-hongik-midnight-blue bg-[#f7fafc]"
-                      : "text-hongik-black hover:text-hongik-midnight-blue hover:bg-[#f7fafc]"
+                      ? "bg-[#f7fafc] text-hongik-midnight-blue"
+                      : "text-hongik-black hover:bg-[#f7fafc] hover:text-hongik-midnight-blue"
                   }`}
                 >
                   {link.label}

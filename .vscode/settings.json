@@ -36,5 +36,15 @@
   },
 
   // extended cSpell dictionary
-  "cSpell.words": ["hongik", "nextjs", "oxfmt", "pretendard", "sevalla", "tria", "trivago", "unrs"]
+  "cSpell.words": [
+    "hongik",
+    "nextjs",
+    "oxfmt",
+    "pretendard",
+    "sevalla",
+    "Stylesheet",
+    "tria",
+    "trivago",
+    "unrs"
+  ]
 }
