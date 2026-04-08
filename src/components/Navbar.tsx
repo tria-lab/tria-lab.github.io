@@ -1,5 +1,6 @@
 "use client"
 
+import { cn } from "@/lib/utils"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useState, useEffect } from "react"
@@ -46,9 +47,10 @@ export default function Navbar() {
   return (
     <>
       <header
-        className={`fixed inset-x-0 top-0 z-50 h-17.5 border-b bg-white transition-shadow ${
-          isScrolled ? "shadow-md" : ""
-        }`}
+        className={cn(
+          "fixed inset-x-0 top-0 z-50 h-17.5 border-b bg-white transition-shadow",
+          isScrolled && "shadow-md",
+        )}
       >
         <div className="mx-auto flex h-full max-w-350 items-center justify-between px-6">
           <Link
@@ -65,17 +67,19 @@ export default function Navbar() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className={`group relative py-2 font-medium no-underline transition-colors ${
+                    className={cn(
+                      "group relative py-2 font-medium no-underline transition-colors",
                       isActive(link.href)
                         ? "text-hongik-midnight-blue"
-                        : "text-hongik-black hover:text-hongik-midnight-blue"
-                    }`}
+                        : "text-hongik-black hover:text-hongik-midnight-blue",
+                    )}
                   >
                     {link.label}
                     <span
-                      className={`absolute bottom-0 left-0 h-0.5 bg-hongik-midnight-blue transition-all duration-300 ${
-                        isActive(link.href) ? "w-full" : "w-0 group-hover:w-full"
-                      }`}
+                      className={cn(
+                        "absolute bottom-0 left-0 h-0.5 bg-hongik-midnight-blue transition-all duration-300",
+                        isActive(link.href) ? "w-full" : "w-0 group-hover:w-full",
+                      )}
                     />
                   </Link>
                 </li>
@@ -90,35 +94,40 @@ export default function Navbar() {
             aria-expanded={isOpen}
           >
             <span
-              className={`block h-0.5 w-6 bg-hongik-black transition-transform duration-150 ${
-                isOpen ? "translate-y-2 rotate-45" : ""
-              }`}
+              className={cn(
+                "block h-0.5 w-6 bg-hongik-black transition-transform duration-150",
+                isOpen && "translate-y-2 rotate-45",
+              )}
             />
             <span
-              className={`block h-0.5 w-6 bg-hongik-black transition-opacity duration-150 ${
-                isOpen ? "opacity-0" : ""
-              }`}
+              className={cn(
+                "block h-0.5 w-6 bg-hongik-black transition-opacity duration-150",
+                isOpen && "opacity-0",
+              )}
             />
             <span
-              className={`block h-0.5 w-6 bg-hongik-black transition-transform duration-150 ${
-                isOpen ? "-translate-y-2 -rotate-45" : ""
-              }`}
+              className={cn(
+                "block h-0.5 w-6 bg-hongik-black transition-transform duration-150",
+                isOpen && "-translate-y-2 -rotate-45",
+              )}
             />
           </button>
         </div>
       </header>
 
       <div
-        className={`fixed inset-0 z-40 bg-black/50 transition-opacity duration-300 ${
-          isOpen ? "opacity-100" : "pointer-events-none opacity-0"
-        }`}
+        className={cn(
+          "fixed inset-0 z-40 bg-black/50 transition-opacity duration-300",
+          isOpen ? "opacity-100" : "pointer-events-none opacity-0",
+        )}
         onClick={() => setIsOpen(false)}
       />
 
       <nav
-        className={`fixed inset-y-0 right-0 z-50 w-64 transform bg-white shadow-xl transition-transform duration-300 ${
-          isOpen ? "translate-x-0" : "translate-x-full"
-        }`}
+        className={cn(
+          "fixed inset-y-0 right-0 z-50 w-64 transform bg-white shadow-xl transition-transform duration-300",
+          isOpen ? "translate-x-0" : "translate-x-full",
+        )}
       >
         <div className="p-6">
           <div className="mb-6 flex justify-end">
@@ -136,11 +145,12 @@ export default function Navbar() {
                 <Link
                   href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className={`block rounded-sm px-4 py-2 font-medium no-underline transition-colors ${
+                  className={cn(
+                    "block rounded-sm px-4 py-2 font-medium no-underline transition-colors",
                     isActive(link.href)
                       ? "bg-[#f7fafc] text-hongik-midnight-blue"
-                      : "text-hongik-black hover:bg-[#f7fafc] hover:text-hongik-midnight-blue"
-                  }`}
+                      : "text-hongik-black hover:bg-[#f7fafc] hover:text-hongik-midnight-blue",
+                  )}
                 >
                   {link.label}
                 </Link>
