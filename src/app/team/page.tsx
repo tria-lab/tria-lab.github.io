@@ -1,46 +1,61 @@
+type Human = {
+  name: string
+  role: string
+  email: string
+  research: string
+}
+
+type Student = Human & {
+  // Type extension
+}
+
+type Professor = Human & {
+  // Type extension
+}
+
+const professors = [
+  {
+    name: "Dr. Jane Smith",
+    role: "Lab Director",
+    email: "jane.smith@example.edu",
+    research: "Natural Language Processing, Machine Learning",
+  },
+  {
+    name: "Dr. John Doe",
+    role: "Senior Researcher",
+    email: "john.doe@example.edu",
+    research: "Computer Vision, Deep Learning",
+  },
+] as const satisfies Professor[]
+
+const students = [
+  {
+    name: "Alice Park",
+    role: "PhD Student",
+    email: "alice.park@example.edu",
+    research: "Reinforcement Learning, Robotics",
+  },
+  {
+    name: "Bob Kim",
+    role: "PhD Student",
+    email: "bob.kim@example.edu",
+    research: "Natural Language Understanding",
+  },
+  {
+    name: "Carol Lee",
+    role: "Master Student",
+    email: "carol.lee@example.edu",
+    research: "Data Mining, Information Retrieval",
+  },
+  {
+    name: "David Choi",
+    role: "Master Student",
+    email: "david.choi@example.edu",
+    research: "Computer Vision",
+  },
+] as const satisfies Student[]
+
 export default function Team() {
-  const professors = [
-    {
-      name: "Dr. Jane Smith",
-      role: "Lab Director",
-      email: "jane.smith@example.edu",
-      research: "Natural Language Processing, Machine Learning",
-    },
-    {
-      name: "Dr. John Doe",
-      role: "Senior Researcher",
-      email: "john.doe@example.edu",
-      research: "Computer Vision, Deep Learning",
-    },
-  ]
-
-  const students = [
-    {
-      name: "Alice Park",
-      role: "PhD Student",
-      email: "alice.park@example.edu",
-      research: "Reinforcement Learning, Robotics",
-    },
-    {
-      name: "Bob Kim",
-      role: "PhD Student",
-      email: "bob.kim@example.edu",
-      research: "Natural Language Understanding",
-    },
-    {
-      name: "Carol Lee",
-      role: "Master Student",
-      email: "carol.lee@example.edu",
-      research: "Data Mining, Information Retrieval",
-    },
-    {
-      name: "David Choi",
-      role: "Master Student",
-      email: "david.choi@example.edu",
-      research: "Computer Vision",
-    },
-  ]
-
   return (
     <div className="mx-auto max-w-4xl px-6 py-12">
       <h1 className="mb-8 text-4xl font-bold">Our Team</h1>

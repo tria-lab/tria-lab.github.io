@@ -1,31 +1,33 @@
-export default function Blog() {
-  const posts = [
-    {
-      title: "Getting Started with Research",
-      date: "March 15, 2026",
-      wordCount: 1000,
-      readingTime: 60,
-      excerpt:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...",
-    },
-    {
-      title: "Our Latest Findings",
-      date: "February 28, 2026",
-      wordCount: 1000,
-      readingTime: 60,
-      excerpt:
-        "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat...",
-    },
-    {
-      title: "Conference Highlights",
-      date: "January 10, 2026",
-      wordCount: 1000,
-      readingTime: 60,
-      excerpt:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque imperdiet purus quis metus aliquam, vitae fermentum ex...",
-    },
-  ]
+type Post = { title: string; date: string; wordCount: number; readingTime: number; excerpt: string }
 
+const posts = [
+  {
+    title: "Getting Started with Research",
+    date: "March 15, 2026",
+    wordCount: 1000,
+    readingTime: 60,
+    excerpt:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...",
+  },
+  {
+    title: "Our Latest Findings",
+    date: "February 28, 2026",
+    wordCount: 1000,
+    readingTime: 60,
+    excerpt:
+      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat...",
+  },
+  {
+    title: "Conference Highlights",
+    date: "January 10, 2026",
+    wordCount: 1000,
+    readingTime: 60,
+    excerpt:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque imperdiet purus quis metus aliquam, vitae fermentum ex...",
+  },
+] as const satisfies Post[]
+
+export default function Blog() {
   return (
     <div className="mx-auto max-w-4xl px-6 py-12">
       <h1 className="mb-8 text-4xl font-bold">Blog</h1>
