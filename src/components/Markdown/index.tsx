@@ -55,24 +55,24 @@ const renderers: Components = {
   ),
 
   li: ({ children, ...props }) => (
-    <li className="mt-4 text-base leading-8 first:mt-10" {...props}>
+    <li className="mt-4 text-base/8 first:mt-10" {...props}>
       {children}
     </li>
   ),
 
   ol: ({ children, ...props }) => (
-    <ol className="mx-0 my-0 mb-6 ml-5" {...props}>
+    <ol className="m-0 mb-6 ml-5" {...props}>
       {children}
     </ol>
   ),
   ul: ({ children, ...props }) => (
-    <ul className="mx-0 my-0 mb-6 ml-5" {...props}>
+    <ul className="m-0 mb-6 ml-5" {...props}>
       {children}
     </ul>
   ),
 
   p: ({ children, ...props }) => (
-    <p className="mb-4 text-base leading-8" {...props}>
+    <p className="mb-4 text-base/8" {...props}>
       {children}
     </p>
   ),

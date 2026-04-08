@@ -38,7 +38,7 @@ export default function ImageNode({ alt, src }: { alt: string; src: string }) {
           title={alt || "YouTube video"}
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
-          className="absolute top-0 left-0 h-full w-full border-0"
+          className="absolute top-0 left-0 size-full border-0"
         />
       </span>
     )
@@ -49,7 +49,7 @@ export default function ImageNode({ alt, src }: { alt: string; src: string }) {
       data-testid="image-wrapper"
       className={cn(
         "relative mx-auto my-4 mt-4 mb-8 flex w-full max-w-full overflow-hidden rounded-md shadow-md",
-        isLoaded ? "min-h-auto" : "min-h-[300px]",
+        isLoaded ? "min-h-auto" : "min-h-75",
       )}
     >
       <Image
