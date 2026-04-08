@@ -16,7 +16,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
 
       <body>
         <Navbar />
-        <main className="min-h-screen pt-[70px]">{children}</main>
+        <main className="min-h-screen pt-17.5">{children}</main>
       </body>
     </html>
   )

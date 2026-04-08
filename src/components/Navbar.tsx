@@ -46,11 +46,11 @@ export default function Navbar() {
   return (
     <>
       <header
-        className={`fixed top-0 right-0 left-0 z-50 h-[70px] border-b bg-white transition-shadow ${
+        className={`fixed inset-x-0 top-0 z-50 h-17.5 border-b bg-white transition-shadow ${
           isScrolled ? "shadow-md" : ""
         }`}
       >
-        <div className="mx-auto flex h-full max-w-[1400px] items-center justify-between px-6">
+        <div className="mx-auto flex h-full max-w-350 items-center justify-between px-6">
           <Link
             href="/"
             className="text-xl font-bold text-hongik-black hover:text-hongik-midnight-blue"
@@ -116,7 +116,7 @@ export default function Navbar() {
       />
 
       <nav
-        className={`fixed top-0 right-0 bottom-0 z-50 w-64 transform bg-white shadow-xl transition-transform duration-300 ${
+        className={`fixed inset-y-0 right-0 z-50 w-64 transform bg-white shadow-xl transition-transform duration-300 ${
           isOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
@@ -136,7 +136,7 @@ export default function Navbar() {
                 <Link
                   href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className={`block rounded px-4 py-2 font-medium no-underline transition-colors ${
+                  className={`block rounded-sm px-4 py-2 font-medium no-underline transition-colors ${
                     isActive(link.href)
                       ? "bg-[#f7fafc] text-hongik-midnight-blue"
                       : "text-hongik-black hover:bg-[#f7fafc] hover:text-hongik-midnight-blue"

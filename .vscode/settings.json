@@ -6,9 +6,15 @@
     "mise.lock": true,
     "bun.lock": true
   },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
   "files.associations": {
     "*.css": "tailwindcss"
   },
+
+  // covered by eslint, see https://github.com/schoero/eslint-plugin-better-tailwindcss/blob/main/docs/rules/enforce-canonical-classes.md
+  "tailwindCSS.lint.suggestCanonicalClasses": "ignore",
 
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -41,6 +47,7 @@
     "nextjs",
     "oxfmt",
     "pretendard",
+    "pretendardvariable",
     "sevalla",
     "Stylesheet",
     "tria",

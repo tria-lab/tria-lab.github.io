@@ -33,7 +33,7 @@ export default function Blog() {
       <section className="mb-12">
         <div className="space-y-8">
           {posts.map(({ title, date, readingTime, wordCount, excerpt }, index) => (
-            <article key={index} className="border-b border-zinc-500 pb-6 pb-8 last:border-0">
+            <article key={index} className="border-b border-zinc-500 pb-8 last:border-0">
               <h3 className="mb-1 text-xl font-semibold">{title}</h3>
               <p className="mb-3 text-sm text-zinc-500">
                 {date} · {readingTime} min read · {wordCount} words
