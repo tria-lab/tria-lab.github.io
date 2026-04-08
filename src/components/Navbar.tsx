@@ -20,9 +20,8 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
 
   const isActive = (href: string) => {
-    const currentPath = pathname.split("?")[0].split("#")[0]
-    const linkPath = href.split("?")[0].split("#")[0]
-    return currentPath === linkPath
+    const normalize = (path: string) => path.split("?")[0].split("#")[0].replace(/\/$/, "") || "/"
+    return normalize(pathname) === normalize(href)
   }
 
   useEffect(() => {
