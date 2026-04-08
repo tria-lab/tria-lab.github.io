@@ -1,8 +1,7 @@
+import { SiGooglescholar } from "@icons-pack/react-simple-icons"
+
 type Human = {
   name: string
-  role: string
-  email: string
-  research: string
 }
 
 type Student = Human & {
@@ -10,49 +9,32 @@ type Student = Human & {
 }
 
 type Professor = Human & {
-  // Type extension
+  email: string
+  googleScholar?: string
 }
 
 const professors = [
   {
-    name: "Dr. Jane Smith",
-    role: "Lab Director",
-    email: "jane.smith@example.edu",
-    research: "Natural Language Processing, Machine Learning",
-  },
-  {
-    name: "Dr. John Doe",
-    role: "Senior Researcher",
-    email: "john.doe@example.edu",
-    research: "Computer Vision, Deep Learning",
+    name: "Kuk Jin Jang",
+    email: "jangkj@hongik.ac.kr",
+    googleScholar: "https://scholar.google.com/citations?user=HFajZtgAAAAJ",
   },
 ] as const satisfies Professor[]
 
 const students = [
-  {
-    name: "Alice Park",
-    role: "PhD Student",
-    email: "alice.park@example.edu",
-    research: "Reinforcement Learning, Robotics",
-  },
-  {
-    name: "Bob Kim",
-    role: "PhD Student",
-    email: "bob.kim@example.edu",
-    research: "Natural Language Understanding",
-  },
-  {
-    name: "Carol Lee",
-    role: "Master Student",
-    email: "carol.lee@example.edu",
-    research: "Data Mining, Information Retrieval",
-  },
-  {
-    name: "David Choi",
-    role: "Master Student",
-    email: "david.choi@example.edu",
-    research: "Computer Vision",
-  },
+  { name: "김형준" },
+  { name: "김범수" },
+  { name: "손기배" },
+  { name: "홍진우" },
+  { name: "이광호" },
+  { name: "윤서준" },
+  { name: "김휘수" },
+  { name: "장문경" },
+  { name: "박주민" },
+  { name: "배나영" },
+  { name: "윤서준" },
+  { name: "이태훈" },
+  { name: "소정호" },
 ] as const satisfies Student[]
 
 export default function Team() {
@@ -69,12 +51,23 @@ export default function Team() {
       <section className="mb-12">
         <h2 className="mb-6 text-2xl font-semibold">Professors</h2>
         <div className="grid gap-6">
-          {professors.map((member) => (
-            <div key={member.email} className="rounded-lg border p-6">
-              <h3 className="text-xl font-semibold">{member.name}</h3>
-              <p className="text-zinc-600">{member.role}</p>
-              <p className="mt-2 text-sm">Email: {member.email}</p>
-              <p className="mt-1 text-sm">Research: {member.research}</p>
+          {professors.map(({ name, email, googleScholar }) => (
+            <div key={email} className="rounded-lg border p-6">
+              <h3 className="inline text-xl font-semibold">{name}</h3>
+              {googleScholar && (
+                <a
+                  href={googleScholar}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block"
+                >
+                  {/* #4285F4 = SiGooglescholarHex */}
+                  <SiGooglescholar className="ml-2 cursor-pointer hover:text-[#4285F4]" />
+                </a>
+              )}
+              <p className="mt-2 text-sm">
+                Email: <a href={`mailto:${email}`}>{email}</a>
+              </p>
             </div>
           ))}
         </div>
@@ -83,12 +76,9 @@ export default function Team() {
       <section className="mb-12">
         <h2 className="mb-6 text-2xl font-semibold">Students</h2>
         <div className="grid gap-6 md:grid-cols-2">
-          {students.map((member) => (
-            <div key={member.email} className="rounded-lg border p-6">
-              <h3 className="text-xl font-semibold">{member.name}</h3>
-              <p className="text-zinc-600">{member.role}</p>
-              <p className="mt-2 text-sm">Email: {member.email}</p>
-              <p className="mt-1 text-sm">Research: {member.research}</p>
+          {students.map(({ name }) => (
+            <div key={name} className="rounded-lg border p-6">
+              <h3 className="text-xl font-semibold">{name}</h3>
             </div>
           ))}
         </div>
