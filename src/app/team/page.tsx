@@ -1,43 +1,27 @@
 import { SiGooglescholar } from "@icons-pack/react-simple-icons"
+import { YAML } from "bun"
+import fs from "fs"
+import { z } from "zod"
 
-type Human = {
-  name: string
-}
+const studentSchema = z.object({
+  name: z.string().min(1),
+})
 
-type Student = Human & {
-  // Type extension
-}
+const professorSchema = studentSchema.extend({
+  email: z.email(),
+  googleScholar: z.url().optional(),
+})
 
-type Professor = Human & {
-  email: string
-  googleScholar?: string
-}
-
-const professors = [
-  {
-    name: "Kuk Jin Jang",
-    email: "jangkj@hongik.ac.kr",
-    googleScholar: "https://scholar.google.com/citations?user=HFajZtgAAAAJ",
-  },
-] as const satisfies Professor[]
-
-const students = [
-  { name: "김형준" },
-  { name: "김범수" },
-  { name: "손기배" },
-  { name: "홍진우" },
-  { name: "이광호" },
-  { name: "윤서준" },
-  { name: "김휘수" },
-  { name: "장문경" },
-  { name: "박주민" },
-  { name: "배나영" },
-  { name: "윤서준" },
-  { name: "이태훈" },
-  { name: "소정호" },
-] as const satisfies Student[]
+const teamSchema = z.object({
+  professors: z.array(professorSchema),
+  students: z.array(studentSchema),
+})
 
 export default function Team() {
+  const { professors, students } = teamSchema.parse(
+    YAML.parse(fs.readFileSync("src/content/team.yaml", "utf8")),
+  )
+
   return (
     <div className="mx-auto max-w-4xl px-6 py-12">
       <h1 className="mb-8 text-4xl font-bold">Our Team</h1>
