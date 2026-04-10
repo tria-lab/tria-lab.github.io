@@ -1,0 +1,14 @@
+- title: Paper 3
+  authors: author A, author B, author C
+  date: "2026.01.01"
+  link: https://domain.example
+
+- title: Paper 2
+  authors: author A, author B, author C
+  date: "2025.04.10"
+  link: https://domain.example
+
+- title: Paper 1
+  authors: author A, author B, author C
+  date: "2024.01.01"
+  link: https://domain.example
