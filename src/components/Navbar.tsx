@@ -8,8 +8,8 @@ import { useState, useEffect } from "react"
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
-  { href: "/research", label: "Research" },
   { href: "/team", label: "Team" },
+  { href: "/research", label: "Research" },
   { href: "/publications", label: "Publications" },
   { href: "/blog", label: "Blog" },
   { href: "/news", label: "News" },
@@ -63,7 +63,7 @@ export default function Navbar() {
             {/* Empty logo */}
           </Link>
 
-          <nav className="hidden md:block">
+          <nav className="hidden lg:block">
             <ul className="m-0 flex list-none items-center gap-8 p-0">
               {navLinks.map((link) => (
                 <li key={link.href}>
@@ -91,7 +91,7 @@ export default function Navbar() {
 
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="flex cursor-pointer flex-col gap-1.5 border-none bg-none p-2 md:hidden"
+            className="flex cursor-pointer flex-col gap-1.5 border-none bg-none p-2 lg:hidden"
             aria-label="Toggle navigation menu"
             aria-expanded={isOpen}
           >
