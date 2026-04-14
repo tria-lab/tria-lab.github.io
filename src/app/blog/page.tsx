@@ -1,6 +1,6 @@
-import type { Metadata } from "next"
 import getMetadata from "@/lib/content/getMetadata"
 import { pageTitle } from "@/lib/utils"
+import type { Metadata } from "next"
 
 export const metadata: Metadata = {
   title: pageTitle("Blog"),

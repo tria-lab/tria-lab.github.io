@@ -1,5 +1,5 @@
-import type { Metadata } from "next"
 import { pageTitle } from "@/lib/utils"
+import type { Metadata } from "next"
 
 export const metadata: Metadata = {
   title: pageTitle("Research"),

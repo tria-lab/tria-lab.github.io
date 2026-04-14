@@ -1,8 +1,8 @@
+import { pageTitle } from "@/lib/utils"
 import { YAML } from "bun"
 import fs from "fs"
-import { z } from "zod"
-import { pageTitle } from "@/lib/utils"
 import type { Metadata } from "next"
+import { z } from "zod"
 
 export const metadata: Metadata = {
   title: pageTitle("Publications"),
