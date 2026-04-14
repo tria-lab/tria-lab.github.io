@@ -1,3 +1,5 @@
+import { A } from "@/components/Link"
+
 export default function Home() {
   return (
     <div>
@@ -14,9 +16,7 @@ export default function Home() {
           </strong>
         </p>
         <p className="mx-auto mb-8 max-w-2xl text-lg">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt
-          ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-          ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          Join our <A href="/team">Team</A>
         </p>
       </section>
     </div>
