@@ -57,7 +57,7 @@ export default function Navbar() {
         <div className="mx-auto flex h-full max-w-350 items-center justify-between px-6">
           <Link
             href="/"
-            className="text-xl font-bold text-hongik-black hover:text-hongik-midnight-blue"
+            className="text-xl font-bold text-hongik-black hover:text-hongik-medium-blue"
           >
             [LOGO] TRIA LAB
             {/* Empty logo */}
@@ -72,14 +72,14 @@ export default function Navbar() {
                     className={cn(
                       "group relative py-2 font-medium no-underline transition-colors",
                       isActive(link.href)
-                        ? "text-hongik-midnight-blue"
-                        : "text-hongik-black hover:text-hongik-midnight-blue",
+                        ? "text-hongik-medium-blue"
+                        : "text-hongik-black hover:text-hongik-medium-blue",
                     )}
                   >
                     {link.label}
                     <span
                       className={cn(
-                        "absolute bottom-0 left-0 h-0.5 bg-hongik-midnight-blue transition-all duration-300",
+                        "absolute bottom-0 left-0 h-0.5 bg-hongik-medium-blue transition-all duration-300",
                         isActive(link.href) ? "w-full" : "w-0 group-hover:w-full",
                       )}
                     />
@@ -135,7 +135,7 @@ export default function Navbar() {
           <div className="mb-6 flex justify-end">
             <button
               onClick={() => setIsOpen(false)}
-              className="text-2xl text-hongik-black hover:text-hongik-midnight-blue"
+              className="text-2xl text-hongik-black hover:text-hongik-medium-blue"
               aria-label="Close menu"
             >
               ×
@@ -150,8 +150,8 @@ export default function Navbar() {
                   className={cn(
                     "block rounded-sm px-4 py-2 font-medium no-underline transition-colors",
                     isActive(link.href)
-                      ? "bg-[#f7fafc] text-hongik-midnight-blue"
-                      : "text-hongik-black hover:bg-[#f7fafc] hover:text-hongik-midnight-blue",
+                      ? "bg-[#f7fafc] text-hongik-medium-blue"
+                      : "text-hongik-black hover:bg-[#f7fafc] hover:text-hongik-medium-blue",
                   )}
                 >
                   {link.label}
