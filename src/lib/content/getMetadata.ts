@@ -3,6 +3,7 @@ import matter from "gray-matter"
 import slugify from "slugify"
 
 type Metadata = {
+  filename: string
   slug: string
   title: string
   date: string
@@ -22,10 +23,16 @@ export default function getMetadata(contentPath: string): Metadata[] {
       const matterResult = matter(content)
       const rawSlug = filename.replace(".md", "")
       const slug = slugify(rawSlug, { lower: true })
+      const dateMatch = rawSlug.match(/^(\d{4}-\d{2}-\d{2})/) // YYYY-MM-DD
+
+      if (!dateMatch)
+        throw `filename "${filename}" in "${folder}" does not start with YYYY-MM-DD(-n)`
+
       return {
+        filename,
         slug,
         title: matterResult.data.title,
-        date: matterResult.data.date,
+        date: dateMatch[1],
         excerpt: matterResult.data.excerpt,
         wordCount: 999,
         readingTime: 999,

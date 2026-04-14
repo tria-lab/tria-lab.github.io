@@ -10,20 +10,20 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params
 
-  const post = getMdContent(`blog/${slug}`)
+  const post = getMdContent(`news/${slug}`)
 
   if (!post) return {}
 
-  return { title: pageTitle(`${post.data.title} | Blog`) }
+  return { title: pageTitle(`${post.data.title} | News`) }
 }
 
 export async function generateStaticParams() {
-  return getMetadata("blog").map((post) => ({ slug: post.slug }))
+  return getMetadata("news").map((post) => ({ slug: post.slug }))
 }
 
-export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
+export default async function NewsPost({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
-  const post = getMdContent(`blog/${slug}`)
+  const post = getMdContent(`news/${slug}`)
   const date = slug.match(/^(\d{4}-\d{2}-\d{2})/)![1]
 
   return (
