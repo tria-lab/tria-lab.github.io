@@ -38,10 +38,6 @@
   --color-wow-red: #ff4433;
 }
 
-::selection {
-  @apply bg-hongik-black text-hongik-white;
-}
-
 html,
 body {
   /*

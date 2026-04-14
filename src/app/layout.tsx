@@ -9,15 +9,24 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className="h-full antialiased" data-scroll-behavior="smooth">
+    <html lang="en" className="h-screen antialiased" data-scroll-behavior="smooth">
       <head>
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
       </head>
 
-      <body>
+      <body className="flex min-h-screen flex-col selection:bg-hongik-black selection:text-hongik-white">
         <Navbar />
-        <main className="min-h-screen pt-17.5">{children}</main>
+        <main className="flex-1 pt-17.5">{children}</main>
+        <Footer />
       </body>
     </html>
+  )
+}
+
+function Footer() {
+  return (
+    <footer className="bg-hongik-black py-6 text-center text-sm text-hongik-white selection:bg-hongik-white selection:text-hongik-black!">
+      © {new Date().getFullYear()} TRIA Lab. All rights reserved.
+    </footer>
   )
 }
