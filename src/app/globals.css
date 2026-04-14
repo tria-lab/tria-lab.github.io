@@ -39,7 +39,7 @@
 }
 
 ::selection {
-  @apply bg-hongik-azure-blue text-hongik-white;
+  @apply bg-hongik-black text-hongik-white;
 }
 
 html,
