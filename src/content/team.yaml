@@ -3,15 +3,15 @@ professors:
     email: jangkj@hongik.ac.kr
     googleScholar: https://scholar.google.com/citations?user=HFajZtgAAAAJ
 students:
-  - name: 김형준
   - name: 김범수
-  - name: 손기배
-  - name: 홍진우
-  - name: 이광호
-  - name: 윤서준
+  - name: 김형준
   - name: 김휘수
-  - name: 장문경
   - name: 박주민
   - name: 배나영
-  - name: 이태훈
   - name: 소정호
+  - name: 손기배
+  - name: 윤서준
+  - name: 이광호
+  - name: 이태훈
+  - name: 장문경
+  - name: 홍진우
