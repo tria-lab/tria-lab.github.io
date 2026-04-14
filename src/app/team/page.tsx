@@ -3,8 +3,8 @@ import Markdown from "@/components/Markdown"
 import getContent from "@/lib/content/getContent"
 import { pageTitle } from "@/lib/utils"
 import { SiGooglescholar } from "@icons-pack/react-simple-icons"
-import { YAML } from "bun"
 import fs from "fs"
+import { load } from "js-yaml"
 import { Mail } from "lucide-react"
 import type { Metadata } from "next"
 import { z } from "zod"
@@ -29,7 +29,7 @@ const teamSchema = z.object({
 
 export default function Team() {
   const { professors, students } = teamSchema.parse(
-    YAML.parse(fs.readFileSync("src/content/team.yaml", "utf8")),
+    load(fs.readFileSync("src/content/team.yaml", "utf8")),
   )
   const teamMd = getContent("team")
 

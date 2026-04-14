@@ -1,7 +1,7 @@
 import { A } from "@/components/Link"
 import { pageTitle } from "@/lib/utils"
-import { YAML } from "bun"
 import fs from "fs"
+import { load } from "js-yaml"
 import type { Metadata } from "next"
 import { z } from "zod"
 
@@ -19,7 +19,7 @@ const publicationSchema = z.object({
 export default function Publications() {
   const publications = z
     .array(publicationSchema)
-    .parse(YAML.parse(fs.readFileSync("src/content/publications.yaml", "utf8")))
+    .parse(load(fs.readFileSync("src/content/publications.yaml", "utf8")))
 
   return (
     <div className="mx-auto max-w-4xl px-6 py-12">
