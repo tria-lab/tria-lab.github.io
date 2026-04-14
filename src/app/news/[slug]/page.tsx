@@ -1,5 +1,5 @@
 import getMdContent from "@/lib/content/getContent"
-import getMetadata from "@/lib/content/getMetadata"
+import { getDirMetadata } from "@/lib/content/getMetadata"
 import { pageTitle } from "@/lib/utils"
 import type { Metadata } from "next"
 
@@ -18,7 +18,7 @@ export async function generateMetadata({
 }
 
 export async function generateStaticParams() {
-  return getMetadata("news").map((post) => ({ slug: post.slug }))
+  return getDirMetadata("news").map((post) => ({ slug: post.slug }))
 }
 
 export default async function NewsPost({ params }: { params: Promise<{ slug: string }> }) {

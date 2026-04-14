@@ -1,5 +1,5 @@
 import { A } from "@/components/Link"
-import getMetadata from "@/lib/content/getMetadata"
+import { getDirMetadata } from "@/lib/content/getMetadata"
 import { pageTitle } from "@/lib/utils"
 import { ArrowRight } from "lucide-react"
 import type { Metadata } from "next"
@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 }
 
 export default function News() {
-  const posts = getMetadata("news")
+  const posts = getDirMetadata("news")
 
   return (
     <div className="mx-auto max-w-4xl px-6 py-12">
