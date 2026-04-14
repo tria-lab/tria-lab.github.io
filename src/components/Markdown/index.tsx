@@ -1,6 +1,6 @@
 import Heading from "./Heading"
 import Image from "./Image"
-import Link from "./Link"
+import { A } from "@/components/Link"
 import type { ComponentProps } from "react"
 import ReactMarkdown from "react-markdown"
 import { Components } from "react-markdown"
@@ -36,7 +36,7 @@ const renderHeading = (level: number) => {
 }
 
 const renderers: Components = {
-  a: ({ children, ...props }) => <Link {...props}>{children}</Link>,
+  a: ({ children, ...props }) => <A {...{ ...props, href: props.href || "" }}>{children}</A>,
 
   code: ({ className, children, ...props }) =>
     className ? children : renderInlineCode({ children, ...props }),

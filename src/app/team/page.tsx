@@ -1,9 +1,11 @@
+import Markdown from "@/components/Markdown"
+import getContent from "@/lib/content/getContent"
+import { pageTitle } from "@/lib/utils"
 import { SiGooglescholar } from "@icons-pack/react-simple-icons"
 import { YAML } from "bun"
 import fs from "fs"
-import { z } from "zod"
-import { pageTitle } from "@/lib/utils"
 import type { Metadata } from "next"
+import { z } from "zod"
 
 export const metadata: Metadata = {
   title: pageTitle("Team"),
@@ -27,16 +29,17 @@ export default function Team() {
   const { professors, students } = teamSchema.parse(
     YAML.parse(fs.readFileSync("src/content/team.yaml", "utf8")),
   )
+  const teamMd = getContent("team")
 
   return (
     <div className="mx-auto max-w-4xl px-6 py-12">
       <h1 className="mb-8 text-4xl font-bold">Our Team</h1>
 
-      <p className="mb-8 text-zinc-600">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut
-        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-        laboris nisi ut aliquip ex ea commodo consequat.
-      </p>
+      {teamMd && (
+        <div className="mb-8">
+          <Markdown>{teamMd.content}</Markdown>
+        </div>
+      )}
 
       <section className="mb-12">
         <h2 className="mb-6 text-2xl font-semibold">Professors</h2>
@@ -72,20 +75,6 @@ export default function Team() {
             </div>
           ))}
         </div>
-      </section>
-
-      <section>
-        <h2 className="mb-6 text-2xl font-semibold">Join Our Team</h2>
-        <p className="mb-4">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt
-          ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-          ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        </p>
-        <p>
-          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-          nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-          deserunt mollit anim id est laborum.
-        </p>
       </section>
     </div>
   )
