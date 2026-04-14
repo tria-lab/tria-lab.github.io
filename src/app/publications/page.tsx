@@ -1,6 +1,12 @@
 import { YAML } from "bun"
 import fs from "fs"
 import { z } from "zod"
+import { pageTitle } from "@/lib/utils"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: pageTitle("Publications"),
+}
 
 const publicationSchema = z.object({
   title: z.string().min(1),

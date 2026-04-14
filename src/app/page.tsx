@@ -1,4 +1,10 @@
 import { A } from "@/components/Link"
+import { pageTitle } from "@/lib/utils"
+import { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: pageTitle("Home"),
+}
 
 export default function Home() {
   return (

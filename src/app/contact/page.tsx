@@ -1,3 +1,10 @@
+import type { Metadata } from "next"
+import { pageTitle } from "@/lib/utils"
+
+export const metadata: Metadata = {
+  title: pageTitle("Contact"),
+}
+
 export default function Contact() {
   return (
     <div className="mx-auto max-w-4xl px-6 py-12">

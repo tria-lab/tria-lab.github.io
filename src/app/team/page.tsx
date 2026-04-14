@@ -2,6 +2,12 @@ import { SiGooglescholar } from "@icons-pack/react-simple-icons"
 import { YAML } from "bun"
 import fs from "fs"
 import { z } from "zod"
+import { pageTitle } from "@/lib/utils"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: pageTitle("Team"),
+}
 
 const studentSchema = z.object({
   name: z.string().min(1),

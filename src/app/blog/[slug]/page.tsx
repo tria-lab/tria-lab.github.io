@@ -1,5 +1,21 @@
 import getMdContent from "@/lib/content/getContent"
 import getMetadata from "@/lib/content/getMetadata"
+import { pageTitle } from "@/lib/utils"
+import type { Metadata } from "next"
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>
+}): Promise<Metadata> {
+  const { slug } = await params
+
+  const post = getMdContent(`blog/${slug}`)
+
+  if (!post) return {}
+
+  return { title: pageTitle(`${post.data.title} | Blog`) }
+}
 
 export async function generateStaticParams() {
   const posts = getMetadata("blog")

@@ -1,4 +1,10 @@
+import type { Metadata } from "next"
 import getMetadata from "@/lib/content/getMetadata"
+import { pageTitle } from "@/lib/utils"
+
+export const metadata: Metadata = {
+  title: pageTitle("Blog"),
+}
 
 export default function Blog() {
   const posts = getMetadata("blog")
