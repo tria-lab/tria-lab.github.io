@@ -1,5 +1,7 @@
+import { A } from "@/components/Link"
 import getMetadata from "@/lib/content/getMetadata"
 import { pageTitle } from "@/lib/utils"
+import { ArrowRight } from "lucide-react"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
@@ -22,9 +24,12 @@ export default function Blog() {
                 {date} · {readingTime} min read · {wordCount} words
               </p>
               <p className="mb-3">{excerpt}</p>
-              <a href={`/blog/${slug}`} className="text-blue-400 hover:underline">
-                Read more
-              </a>
+              <A
+                href={`/blog/${slug}`}
+                className="flex text-blue-400 transition-all duration-100 hover:gap-2 hover:underline"
+              >
+                Read <ArrowRight size={16} />
+              </A>
             </article>
           ))}
         </div>

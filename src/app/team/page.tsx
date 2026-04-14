@@ -1,9 +1,11 @@
+import { A } from "@/components/Link"
 import Markdown from "@/components/Markdown"
 import getContent from "@/lib/content/getContent"
 import { pageTitle } from "@/lib/utils"
 import { SiGooglescholar } from "@icons-pack/react-simple-icons"
 import { YAML } from "bun"
 import fs from "fs"
+import { Mail } from "lucide-react"
 import type { Metadata } from "next"
 import { z } from "zod"
 
@@ -46,21 +48,17 @@ export default function Team() {
         <div className="grid gap-6">
           {professors.map(({ name, email, googleScholar }) => (
             <div key={email} className="rounded-lg border p-6">
-              <h3 className="inline text-xl font-semibold">{name}</h3>
+              <h3 className="inline text-xl font-semibold">{name}</h3>{" "}
               {googleScholar && (
-                <a
-                  href={googleScholar}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block"
-                >
-                  {/* #4285F4 = SiGooglescholarHex */}
-                  <SiGooglescholar className="ml-2 cursor-pointer hover:text-[#4285F4]" />
-                </a>
+                <A href={googleScholar} title="Google Scholar" noIcon>
+                  <SiGooglescholar />
+                </A>
               )}
-              <p className="mt-2 text-sm">
-                Email: <a href={`mailto:${email}`}>{email}</a>
-              </p>
+              <ul>
+                <li className="flex gap-2">
+                  <Mail /> <A href={`mailto:${email}`}>{email}</A>
+                </li>
+              </ul>
             </div>
           ))}
         </div>

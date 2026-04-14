@@ -1,3 +1,4 @@
+import { A } from "@/components/Link"
 import { pageTitle } from "@/lib/utils"
 import { YAML } from "bun"
 import fs from "fs"
@@ -31,9 +32,7 @@ export default function Publications() {
               <h3 className="mb-2 text-xl font-medium">{title}</h3>
               <p className="mb-2 text-zinc-600">{authors}</p>
               <p className="mb-2 text-zinc-600">{date}</p>
-              <a href={link} className="text-blue-400 hover:underline">
-                Read paper
-              </a>
+              <A href={link}>Read</A>
             </div>
           ))}
         </div>

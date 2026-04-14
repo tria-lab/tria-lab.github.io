@@ -5,12 +5,14 @@ import * as React from "react"
 
 function A({
   className,
-  external,
+  noIcon,
   ...props
 }: React.ComponentProps<"a"> & {
   href: string
-  external?: boolean
+  noIcon?: boolean
 }) {
+  const external = props.href?.startsWith("http://") || props.href?.startsWith("https://") || false
+
   const E = external ? "a" : Link
 
   return (
@@ -20,10 +22,10 @@ function A({
         className,
       )}
       {...props}
-      {...(external && { target: "_blank", rel: "noopener noreferrer" })}
+      {...(external && { target: "_blank", rel: "noopener noreferrer nofollow" })}
     >
       {props.children}
-      {external && <ExternalLink size={16} />}
+      {!noIcon && external && <ExternalLink size={16} />}
     </E>
   )
 }
