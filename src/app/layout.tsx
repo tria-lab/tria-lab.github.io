@@ -1,5 +1,6 @@
+import Footer from "./_components/Footer"
+import Navbar from "./_components/Navbar"
 import "./globals.css"
-import Navbar from "@/components/Navbar"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
@@ -20,13 +21,5 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <Footer />
       </body>
     </html>
-  )
-}
-
-function Footer() {
-  return (
-    <footer className="bg-hongik-black py-6 text-center text-sm text-hongik-white selection:bg-hongik-white selection:text-hongik-black!">
-      © {new Date().getFullYear()} TRIA Lab. All rights reserved.
-    </footer>
   )
 }
