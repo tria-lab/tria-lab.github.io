@@ -1,17 +1,85 @@
 professors:
-  - name: Kuk Jin Jang
+  - nameKo: 장국진
+    nameEn: Kukjin Jang # cSpell: disable-line
     email: jangkj@hongik.ac.kr
     googleScholar: https://scholar.google.com/citations?user=HFajZtgAAAAJ
 students:
-  - name: 김범수
-  - name: 김형준
-  - name: 김휘수
-  - name: 박주민
-  - name: 배나영
-  - name: 소정호
-  - name: 손기배
-  - name: 윤서준
-  - name: 이광호
-  - name: 이태훈
-  - name: 장문경
-  - name: 홍진우
+  - nameKo: 김범수
+    # nameEn:
+    # department:
+    researchArea: Data mining / Machine Learning
+    # profilePicture:
+    github: https://github.com/Bum-niverse
+
+  - nameKo: 김형준
+    # nameEn:
+    # department:
+    # researchArea:
+    # profilePicture:
+
+  - nameKo: 김휘수
+    nameEn: Hwisu Kim # cSpell: disable-line
+    department: Industrial & Data Engineering / Computer Engineering
+    researchArea: Spatiotemporal GNN-based Urban Flooding Detection
+    # profilePicture:
+
+  - nameKo: 박주민
+    nameEn: Joomin Park # cSpell: disable-line
+    department: Computer Engineering
+    researchArea: ECG Signal Analysis / Machine Learning / Biomedical Signal Processing
+    # profilePicture:
+
+  - nameKo: 배나영
+    # nameEn: # cSpell: disable-line
+    # department:
+    # researchArea:
+    # profilePicture:
+
+  - nameKo: 소정호
+    # nameEn: # cSpell: disable-line
+    # department:
+    # researchArea:
+    # profilePicture:
+
+  - nameKo: 손기배
+    # nameEn: # cSpell: disable-line
+    # department:
+    # researchArea:
+    # profilePicture:
+
+  - nameKo: 윤서준
+    # nameEn: # cSpell: disable-line
+    # department:
+    # researchArea:
+    # profilePicture:
+
+  - nameKo: 이광호
+    # nameEn: # cSpell: disable-line
+    # department:
+    # researchArea:
+    # profilePicture:
+
+  - nameKo: 이태훈
+    # nameEn: # cSpell: disable-line
+    # department:
+    # researchArea:
+    # profilePicture:
+
+  - nameKo: 장문경
+    nameEn: Moonkyoung Jang # cSpell: disable-line
+    department: Computer Engineering
+    researchArea: Diffusion Models / Controllable Image Generation
+    # profilePicture:
+
+  - nameKo: 홍진우
+    # nameEn: # cSpell: disable-line
+    # department:
+    # researchArea:
+    # profilePicture:
+
+  - nameKo: 김재우
+    nameEn: Jaewoo Kim # cSpell: disable-line
+    # department:
+    researchArea: LLM Inference optimization / TinyML / EfficientML
+    # profilePicture:
+    github: https://github.com/Bias92
