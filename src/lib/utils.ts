@@ -1,3 +1,4 @@
+import { siteConfig } from "./config"
 import { clsx, type ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
 
@@ -6,12 +7,12 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export function pageTitle(pageName: string) {
-  return `${pageName} | TRIA Lab`
+  return `${pageName} | ${siteConfig.title}`
 }
 
 export function openGraph({
   title,
-  description = "TRustworthy Intelligence for Autonomous systems Laboratory",
+  description,
   url,
   type,
 }: {
@@ -22,7 +23,7 @@ export function openGraph({
 }) {
   return {
     title: pageTitle(title),
-    description,
+    description: description || siteConfig.description,
     ...(url && { url }),
     ...(type && { type }),
   }
