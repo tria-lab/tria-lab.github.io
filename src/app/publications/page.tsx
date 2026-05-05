@@ -1,5 +1,5 @@
 import { A } from "@/components/Link"
-import { pageTitle } from "@/lib/utils"
+import { openGraph, pageTitle } from "@/lib/utils"
 import fs from "fs"
 import { load } from "js-yaml"
 import type { Metadata } from "next"
@@ -7,6 +7,7 @@ import { z } from "zod"
 
 export const metadata: Metadata = {
   title: pageTitle("Publications"),
+  openGraph: openGraph({ title: "Publications" }),
 }
 
 const publicationSchema = z.object({

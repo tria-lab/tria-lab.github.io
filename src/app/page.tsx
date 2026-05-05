@@ -1,9 +1,10 @@
 import { A } from "@/components/Link"
-import { pageTitle } from "@/lib/utils"
+import { openGraph, pageTitle } from "@/lib/utils"
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
   title: pageTitle("Home"),
+  openGraph: openGraph({ title: "Home" }),
 }
 
 export default function Home() {

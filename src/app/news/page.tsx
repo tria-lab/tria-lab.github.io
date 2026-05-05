@@ -1,11 +1,12 @@
 import { A } from "@/components/Link"
 import { getDirMetadata } from "@/lib/content/getMetadata"
-import { pageTitle } from "@/lib/utils"
+import { openGraph, pageTitle } from "@/lib/utils"
 import { ArrowRight } from "lucide-react"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
   title: pageTitle("News"),
+  openGraph: openGraph({ title: "News" }),
 }
 
 export default function News() {

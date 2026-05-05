@@ -1,8 +1,9 @@
-import { pageTitle } from "@/lib/utils"
+import { openGraph, pageTitle } from "@/lib/utils"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
   title: pageTitle("Research"),
+  openGraph: openGraph({ title: "Research" }),
 }
 
 export default function Research() {

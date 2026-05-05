@@ -1,9 +1,14 @@
+import { requireOpengraph } from "./src/lib/eslint-rules/require-opengraph"
 import nextVitals from "eslint-config-next/core-web-vitals"
 import nextTs from "eslint-config-next/typescript"
 import betterTailwind from "eslint-plugin-better-tailwindcss"
 import { defineConfig } from "eslint/config"
+import tseslint from "typescript-eslint"
 
 const eslintConfig = defineConfig([
+  {
+    ignores: ["src/lib/eslint-rules/**/*"],
+  },
   ...nextVitals,
   ...nextTs,
   {
@@ -15,6 +20,14 @@ const eslintConfig = defineConfig([
     },
     plugins: {
       "better-tailwindcss": betterTailwind,
+      "tria-lab": {
+        rules: {
+          "require-opengraph": requireOpengraph,
+        },
+      },
+    },
+    languageOptions: {
+      parser: tseslint.parser,
     },
     rules: {
       // https://github.com/schoero/eslint-plugin-better-tailwindcss/blob/main/docs/rules/enforce-canonical-classes.md
@@ -28,6 +41,8 @@ const eslintConfig = defineConfig([
       "better-tailwindcss/no-conflicting-classes": "error",
       // https://github.com/schoero/eslint-plugin-better-tailwindcss/blob/main/docs/rules/no-restricted-classes.md
       "better-tailwindcss/no-restricted-classes": "error",
+
+      "tria-lab/require-opengraph": "error",
     },
   },
 ])

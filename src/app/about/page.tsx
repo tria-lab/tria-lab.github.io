@@ -1,11 +1,12 @@
 import Markdown from "@/components/Markdown"
 import getContent from "@/lib/content/getContent"
-import { pageTitle } from "@/lib/utils"
+import { openGraph, pageTitle } from "@/lib/utils"
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 
 export const metadata: Metadata = {
   title: pageTitle("About"),
+  openGraph: openGraph({ title: "About" }),
 }
 
 export default function About() {

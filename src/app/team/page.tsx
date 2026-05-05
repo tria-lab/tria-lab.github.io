@@ -1,7 +1,7 @@
 import { A } from "@/components/Link"
 import Markdown from "@/components/Markdown"
 import getContent from "@/lib/content/getContent"
-import { pageTitle } from "@/lib/utils"
+import { openGraph, pageTitle } from "@/lib/utils"
 import { SiGooglescholar, SiGithub } from "@icons-pack/react-simple-icons"
 import fs from "fs"
 import { load } from "js-yaml"
@@ -12,6 +12,7 @@ import { z } from "zod"
 
 export const metadata: Metadata = {
   title: pageTitle("Team"),
+  openGraph: openGraph({ title: "Team" }),
 }
 
 const studentSchema = z.object({

@@ -1,6 +1,6 @@
 import getMdContent from "@/lib/content/getContent"
 import { getDirMetadata, getFileMetadata } from "@/lib/content/getMetadata"
-import { pageTitle } from "@/lib/utils"
+import { openGraph, pageTitle } from "@/lib/utils"
 import type { Metadata } from "next"
 import { basename } from "path"
 
@@ -15,7 +15,14 @@ export async function generateMetadata({
 
   if (!post) return {}
 
-  return { title: pageTitle(`${post.data.title} | Blog`) }
+  return {
+    title: pageTitle(`${post.data.title} | Blog`),
+    openGraph: openGraph({
+      type: "article",
+      title: post.data.title,
+      description: post.data.excerpt,
+    }),
+  }
 }
 
 export async function generateStaticParams() {
