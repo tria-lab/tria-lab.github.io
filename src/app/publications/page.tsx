@@ -2,6 +2,7 @@ import { A } from "@/components/Link"
 import { openGraph, pageTitle } from "@/lib/utils"
 import fs from "fs"
 import { load } from "js-yaml"
+import { Rss } from "lucide-react"
 import type { Metadata } from "next"
 import { z } from "zod"
 
@@ -24,7 +25,12 @@ export default function Publications() {
 
   return (
     <div className="mx-auto max-w-4xl px-6 py-12">
-      <h1 className="mb-8 text-4xl font-bold">Publications</h1>
+      <h1 className="mb-8 text-4xl font-bold">
+        Publications{" "}
+        <A target="_blank" href="/publications.xml" className="text-zinc-500">
+          <Rss />
+        </A>
+      </h1>
 
       <section className="mb-12">
         <div className="space-y-8">

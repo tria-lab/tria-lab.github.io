@@ -13,6 +13,7 @@
   "dependencies": {
     "@icons-pack/react-simple-icons": "13.13.0",
     "clsx": "2.1.1",
+    "feed": "5.2.1",
     "gray-matter": "4.0.3",
     "js-yaml": "^4.1.1",
     "lucide-react": "1.8.0",

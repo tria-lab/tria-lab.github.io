@@ -1,7 +1,7 @@
 import { A } from "@/components/Link"
 import { getDirMetadata } from "@/lib/content/getMetadata"
 import { openGraph, pageTitle } from "@/lib/utils"
-import { ArrowRight } from "lucide-react"
+import { ArrowRight, Rss } from "lucide-react"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
@@ -14,7 +14,12 @@ export default function Blog() {
 
   return (
     <div className="mx-auto max-w-4xl px-6 py-12">
-      <h1 className="mb-8 text-4xl font-bold">Blog</h1>
+      <h1 className="mb-8 text-4xl font-bold">
+        Blog{" "}
+        <A target="_blank" href="/blog.xml" className="text-zinc-500">
+          <Rss />
+        </A>
+      </h1>
 
       <section className="mb-12">
         <div className="space-y-8">
