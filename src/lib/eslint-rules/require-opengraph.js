@@ -1,9 +1,8 @@
 /**
  * Vibe coded opengraph eslint plugin
  */
-import type { Rule } from "eslint"
-
-export const requireOpengraph: Rule.RuleModule = {
+/** @type {import('eslint').Rule.RuleModule} */
+export const requireOpengraph = {
   meta: {
     type: "problem",
     docs: {
@@ -24,13 +23,13 @@ export const requireOpengraph: Rule.RuleModule = {
     if (!/page\.(tsx|ts|jsx|js)$/.test(filename)) return {}
 
     return {
-      ExportNamedDeclaration(node: any) {
+      ExportNamedDeclaration(node) {
         if (node.type !== "ExportNamedDeclaration") return
         if (!node.declaration) return
 
         if (node.declaration.type === "VariableDeclaration") {
           const metadataVar = node.declaration.declarations.find(
-            (d: any) =>
+            (d) =>
               d.type === "VariableDeclarator" &&
               d.id.type === "Identifier" &&
               d.id.name === "metadata",
@@ -41,7 +40,7 @@ export const requireOpengraph: Rule.RuleModule = {
           if (!init || init.type !== "ObjectExpression") return
 
           const ogProp = init.properties.find(
-            (prop: any) =>
+            (prop) =>
               prop.type === "Property" &&
               !prop.computed &&
               prop.key.type === "Identifier" &&
@@ -64,14 +63,14 @@ export const requireOpengraph: Rule.RuleModule = {
 
           const ogValue = ogProp.value
           const hasTitle = ogValue.properties.some(
-            (p: any) =>
+            (p) =>
               p.type === "Property" &&
               !p.computed &&
               p.key.type === "Identifier" &&
               p.key.name === "title",
           )
           const hasDescription = ogValue.properties.some(
-            (p: any) =>
+            (p) =>
               p.type === "Property" &&
               !p.computed &&
               p.key.type === "Identifier" &&

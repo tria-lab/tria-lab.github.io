@@ -1,4 +1,4 @@
-import { requireOpengraph } from "./src/lib/eslint-rules/require-opengraph.ts"
+import { requireOpengraph } from "./src/lib/eslint-rules/require-opengraph.js"
 import nextVitals from "eslint-config-next/core-web-vitals"
 import nextTs from "eslint-config-next/typescript"
 import betterTailwind from "eslint-plugin-better-tailwindcss"
