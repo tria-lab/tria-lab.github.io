@@ -20,7 +20,6 @@ const studentSchema = z.object({
   nameEn: z.string().optional(),
   department: z.string().optional(),
   researchArea: z.string().optional(),
-  profilePicture: z.string().optional(),
   github: z.url().optional(),
 })
 

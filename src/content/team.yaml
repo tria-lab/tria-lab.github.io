@@ -8,78 +8,65 @@ students:
     # nameEn:
     # department:
     researchArea: Data mining / Machine Learning
-    # profilePicture:
     github: https://github.com/Bum-niverse
 
   - nameKo: 김형준
     # nameEn:
     # department:
     # researchArea:
-    # profilePicture:
 
   - nameKo: 김휘수
     nameEn: Hwisu Kim # cSpell: disable-line
     department: Industrial & Data Engineering / Computer Engineering
     researchArea: Spatiotemporal GNN-based Urban Flooding Detection
-    # profilePicture:
 
   - nameKo: 박주민
     nameEn: Joomin Park # cSpell: disable-line
     department: Computer Engineering
     researchArea: ECG Signal Analysis / Machine Learning / Biomedical Signal Processing
-    # profilePicture:
 
   - nameKo: 배나영
     # nameEn: # cSpell: disable-line
     # department:
     # researchArea:
-    # profilePicture:
 
   - nameKo: 소정호
     # nameEn: # cSpell: disable-line
     # department:
     # researchArea:
-    # profilePicture:
 
   - nameKo: 손기배
     # nameEn: # cSpell: disable-line
     # department:
     # researchArea:
-    # profilePicture:
 
   - nameKo: 윤서준
     # nameEn: # cSpell: disable-line
     # department:
     # researchArea:
-    # profilePicture:
 
   - nameKo: 이광호
     # nameEn: # cSpell: disable-line
     # department:
     # researchArea:
-    # profilePicture:
 
   - nameKo: 이태훈
     # nameEn: # cSpell: disable-line
     # department:
     # researchArea:
-    # profilePicture:
 
   - nameKo: 장문경
     nameEn: Moonkyoung Jang # cSpell: disable-line
     department: Computer Engineering
     researchArea: Diffusion Models / Controllable Image Generation
-    # profilePicture:
 
   - nameKo: 홍진우
     # nameEn: # cSpell: disable-line
     # department:
     # researchArea:
-    # profilePicture:
 
   - nameKo: 김재우
     nameEn: Jaewoo Kim # cSpell: disable-line
     # department:
     researchArea: LLM Inference optimization / TinyML / EfficientML
-    # profilePicture:
     github: https://github.com/Bias92
