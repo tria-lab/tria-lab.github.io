@@ -1,5 +1,6 @@
 import Footer from "./_components/Footer"
 import Navbar from "./_components/Navbar"
+import NavigationLoader from "./_components/NavigationLoader"
 import "./globals.css"
 import type { Metadata } from "next"
 
@@ -16,6 +17,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       </head>
 
       <body className="flex min-h-screen flex-col selection:bg-hongik-black selection:text-hongik-white">
+        <NavigationLoader />
         <Navbar />
         <main className="flex-1 pt-17.5">{children}</main>
         <Footer />
