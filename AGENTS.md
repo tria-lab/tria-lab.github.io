@@ -1,6 +1,12 @@
 ## Bun
 
-This project does not use pnpm, yarn, or npm. Always use bun.
+## Tool selection
+
+This project does NOT use pnpm, yarn, or npm. Always use bun.
+
+## Task Completion Requirements
+
+- All of `bun run build`, `bun run lint`, and `bun run fmt:check` must pass before considering tasks completed.
 
 <!-- BEGIN:nextjs-agent-rules -->
 
