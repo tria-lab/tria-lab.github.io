@@ -1,6 +1,7 @@
 import fs from "fs"
 import matter from "gray-matter"
 import { basename, dirname } from "path"
+import readingTime from "reading-time"
 
 type Metadata = {
   slug: string
@@ -33,12 +34,14 @@ export function getFileMetadata(filepath: string) {
   if (!dateMatch)
     throw `filename "${slug}" in "${dirname(filePath)}" does not start with YYYY-MM-DD(-n)`
 
+  const { words, minutes } = readingTime(matterResult.content)
+
   return {
     slug,
     title: matterResult.data.title,
     date: dateMatch[1],
     excerpt: matterResult.data.excerpt,
-    wordCount: 999,
-    readingTime: 999,
+    wordCount: words,
+    readingTime: Math.ceil(minutes),
   } satisfies Metadata
 }
