@@ -6,7 +6,11 @@ This project does NOT use pnpm, yarn, or npm. Always use bun.
 
 ## Task Completion Requirements
 
-- All of `bun run build`, `bun run lint`, and `bun run fmt:check` must pass before considering tasks completed.
+All of `bun run build`, `bun run lint`, and `bun run fmt:check` must pass before considering tasks completed.
+
+## Dependencies
+
+Use Exact version. e.g. "x.y.z" instead of "^x.y.z".
 
 <!-- BEGIN:nextjs-agent-rules -->
 
