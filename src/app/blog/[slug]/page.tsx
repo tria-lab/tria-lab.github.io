@@ -1,3 +1,4 @@
+import { ViewTransitionTitle } from "@/components/ViewTransitionTitle"
 import getMdContent from "@/lib/content/getContent"
 import { getDirMetadata, getFileMetadata } from "@/lib/content/getMetadata"
 import { openGraph, pageTitle } from "@/lib/utils"
@@ -37,10 +38,14 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
 
   return (
     <article className="mx-auto max-w-4xl px-6 py-12">
-      <h1 className="mb-4 text-4xl font-bold">{post.data.title}</h1>
-      <p className="mb-8 text-sm text-zinc-500">
-        {date} · {metadata?.readingTime} min read · {metadata?.wordCount} words
-      </p>
+      <ViewTransitionTitle name={`blog-title-${slug}`}>
+        <h1 className="mb-4 text-4xl font-bold">{post.data.title}</h1>
+      </ViewTransitionTitle>
+      <ViewTransitionTitle name={`blog-meta-${slug}`}>
+        <p className="mb-8 text-sm text-zinc-500">
+          {date} · {metadata?.readingTime} min read · {metadata?.wordCount} words
+        </p>
+      </ViewTransitionTitle>
       <div className="max-w-none" dangerouslySetInnerHTML={{ __html: post.content }} />
     </article>
   )

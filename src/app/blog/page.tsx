@@ -1,4 +1,5 @@
 import { A } from "@/components/Link"
+import { ViewTransitionTitle } from "@/components/ViewTransitionTitle"
 import { getDirMetadata } from "@/lib/content/getMetadata"
 import { openGraph, pageTitle } from "@/lib/utils"
 import { ArrowRight, Rss } from "lucide-react"
@@ -25,10 +26,14 @@ export default function Blog() {
         <div className="space-y-8">
           {posts.map(({ title, date, readingTime, wordCount, excerpt, slug }, index) => (
             <article key={index} className="border-b border-zinc-500 pb-8 last:border-0">
-              <h3 className="mb-1 text-xl font-semibold">{title}</h3>
-              <p className="mb-3 text-sm text-zinc-500">
-                {date} · {readingTime} min read · {wordCount} words
-              </p>
+              <ViewTransitionTitle name={`blog-title-${slug}`}>
+                <h3 className="mb-1 text-xl font-semibold">{title}</h3>
+              </ViewTransitionTitle>
+              <ViewTransitionTitle name={`blog-meta-${slug}`}>
+                <p className="mb-3 text-sm text-zinc-500">
+                  {date} · {readingTime} min read · {wordCount} words
+                </p>
+              </ViewTransitionTitle>
               <p className="mb-3">{excerpt}</p>
               <A
                 href={`/blog/${slug}`}
