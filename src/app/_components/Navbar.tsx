@@ -49,7 +49,7 @@ export default function Navbar() {
     <>
       <header
         className={cn(
-          "fixed inset-x-0 top-0 z-50 h-17.5 border-b bg-white transition-shadow",
+          "fixed inset-x-0 top-0 z-60 h-17.5 border-b bg-white transition-shadow",
           isScrolled && "shadow-md",
         )}
       >
@@ -130,17 +130,8 @@ export default function Navbar() {
           isOpen ? "translate-x-0" : "translate-x-full",
         )}
       >
-        <div className="p-6">
-          <div className="mb-6 flex justify-end">
-            <button
-              onClick={() => setIsOpen(false)}
-              className="text-2xl text-hongik-black hover:text-hongik-medium-blue"
-              aria-label="Close menu"
-            >
-              ×
-            </button>
-          </div>
-          <ul className="m-0 flex list-none flex-col gap-4 p-0">
+        <div className="p-6 pt-17.5">
+          <ul className="m-0 flex list-none flex-col gap-4 px-0 pt-4">
             {navLinks.map((link) => (
               <li key={link.href}>
                 <Link
