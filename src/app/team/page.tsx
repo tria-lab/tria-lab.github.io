@@ -8,7 +8,19 @@ import { load } from "js-yaml"
 import { Mail, User } from "lucide-react"
 import type { Metadata } from "next"
 import Image from "next/image"
+import path from "path"
 import { z } from "zod"
+
+function getImageForName(name: string): string | undefined {
+  const matches = fs.readdirSync("public/team").filter((f) => path.parse(f).name === name)
+
+  if (matches.length === 0) return
+
+  if (matches.length > 1)
+    throw new Error(`Multiple images found for "${name}": ${matches.join(", ")}`)
+
+  return `/team/${matches[0]}`
+}
 
 export const metadata: Metadata = {
   title: pageTitle("Team"),
@@ -75,45 +87,48 @@ export default function Team() {
       <section className="mb-12">
         <h2 className="mb-6 text-2xl font-semibold">Students</h2>
         <div className="grid gap-6 md:grid-cols-2">
-          {students.map(({ nameKo, department, researchArea, github }) => (
-            <div key={nameKo} className="rounded-lg border p-6">
-              {fs.existsSync(`public/team/${nameKo}.png`) ? (
-                <Image
-                  src={`/team/${nameKo}.png`}
-                  alt={nameKo}
-                  width={1000}
-                  height={750}
-                  className="mb-4 aspect-3/4"
-                />
-              ) : (
-                <div className="mb-4 flex aspect-3/4 items-center justify-center">
-                  <User className="size-full text-gray-200" strokeWidth={0.5} />
-                </div>
-              )}
+          {students.map(({ nameKo, department, researchArea, github }) => {
+            const imageSrc = getImageForName(nameKo)
+            return (
+              <div key={nameKo} className="rounded-lg border p-6">
+                {imageSrc ? (
+                  <Image
+                    src={imageSrc}
+                    alt={nameKo}
+                    width={1000}
+                    height={750}
+                    className="mb-4 aspect-3/4"
+                  />
+                ) : (
+                  <div className="mb-4 flex aspect-3/4 items-center justify-center">
+                    <User className="size-full text-gray-200" strokeWidth={0.5} />
+                  </div>
+                )}
 
-              <div className="mb-4 flex h-10 items-center">
-                <h3 className="inline text-xl font-semibold">{nameKo}</h3>
-                {github && (
-                  <A href={github} title="Github" noIcon className="ml-2 inline-block">
-                    <SiGithub />
-                  </A>
+                <div className="mb-4 flex h-10 items-center">
+                  <h3 className="inline text-xl font-semibold">{nameKo}</h3>
+                  {github && (
+                    <A href={github} title="Github" noIcon className="ml-2 inline-block">
+                      <SiGithub />
+                    </A>
+                  )}
+                </div>
+
+                {department && (
+                  <>
+                    <span className="mb-2 font-bold">Department:</span> <span>{department}</span>
+                    <br />
+                  </>
+                )}
+
+                {researchArea && (
+                  <>
+                    <span className="font-bold">Research Area:</span> <span>{researchArea}</span>
+                  </>
                 )}
               </div>
-
-              {department && (
-                <>
-                  <span className="mb-2 font-bold">Department:</span> <span>{department}</span>
-                  <br />
-                </>
-              )}
-
-              {researchArea && (
-                <>
-                  <span className="font-bold">Research Area:</span> <span>{researchArea}</span>
-                </>
-              )}
-            </div>
-          ))}
+            )
+          })}
         </div>
       </section>
     </div>
