@@ -3,12 +3,23 @@ professors:
     nameEn: Kukjin Jang # cSpell: disable-line
     email: jangkj@hongik.ac.kr
     googleScholar: https://scholar.google.com/citations?user=HFajZtgAAAAJ
-students:
+students: # 한글 이름 가나다순
   - nameKo: 김범수
     # nameEn:
     # department:
     researchArea: Data mining / Machine Learning
     github: https://github.com/Bum-niverse
+
+  - nameKo: 김예송
+    # nameEn: # cSpell: disable-line
+    # department:
+    # researchArea:
+
+  - nameKo: 김재우
+    nameEn: Jaewoo Kim # cSpell: disable-line
+    # department:
+    researchArea: LLM Inference optimization / TinyML / EfficientML
+    github: https://github.com/Bias92
 
   - nameKo: 김형준
     # nameEn:
@@ -32,7 +43,7 @@ students:
 
   - nameKo: 소정호
     # nameEn: # cSpell: disable-line
-    # department:
+    department: Computer Engineering
     # researchArea:
 
   - nameKo: 손기배
@@ -46,6 +57,11 @@ students:
     # researchArea:
 
   - nameKo: 이광호
+    # nameEn: # cSpell: disable-line
+    # department:
+    # researchArea:
+
+  - nameKo: 이도현
     # nameEn: # cSpell: disable-line
     # department:
     # researchArea:
@@ -64,9 +80,3 @@ students:
     # nameEn: # cSpell: disable-line
     # department:
     # researchArea:
-
-  - nameKo: 김재우
-    nameEn: Jaewoo Kim # cSpell: disable-line
-    # department:
-    researchArea: LLM Inference optimization / TinyML / EfficientML
-    github: https://github.com/Bias92
