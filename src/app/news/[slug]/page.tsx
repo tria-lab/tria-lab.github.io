@@ -1,3 +1,4 @@
+import Markdown from "@/components/Markdown"
 import { ShareMenu } from "@/components/ShareMenu"
 import getMdContent from "@/lib/content/getContent"
 import { getDirMetadata } from "@/lib/content/getMetadata"
@@ -44,7 +45,7 @@ export default async function NewsPost({ params }: { params: Promise<{ slug: str
         <p className="mb-8 text-sm text-zinc-500">{date}</p>
       </ViewTransition>
       <ShareMenu slug={slug} />
-      <div className="max-w-none" dangerouslySetInnerHTML={{ __html: post.content }} />
+      <Markdown>{post.content}</Markdown>
     </article>
   )
 }

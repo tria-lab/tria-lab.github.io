@@ -1,4 +1,5 @@
 import BlogMetadata from "@/app/blog/_components/metadata"
+import Markdown from "@/components/Markdown"
 import { ShareMenu } from "@/components/ShareMenu"
 import getMdContent from "@/lib/content/getContent"
 import { getDirMetadata, getFileMetadata } from "@/lib/content/getMetadata"
@@ -47,7 +48,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
         <BlogMetadata metadata={{ ...metadata, date }} className="mb-8" />
       </ViewTransition>
       <ShareMenu slug={slug} />
-      <div className="max-w-none" dangerouslySetInnerHTML={{ __html: post.content }} />
+      <Markdown>{post.content}</Markdown>
     </article>
   )
 }
