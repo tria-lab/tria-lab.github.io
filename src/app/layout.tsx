@@ -2,6 +2,7 @@ import Footer from "./_components/Footer"
 import Navbar from "./_components/Navbar"
 import NavigationLoader from "./_components/NavigationLoader"
 import "./globals.css"
+import { Toaster } from "@/components/ui/sonner"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
@@ -21,6 +22,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <Navbar />
         <main className="flex-1 pt-17.5">{children}</main>
         <Footer />
+        <Toaster />
       </body>
     </html>
   )

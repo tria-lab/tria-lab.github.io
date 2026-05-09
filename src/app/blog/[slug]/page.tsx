@@ -1,3 +1,4 @@
+import { ShareMenu } from "@/components/ShareMenu"
 import { ViewTransitionTitle } from "@/components/ViewTransitionTitle"
 import getMdContent from "@/lib/content/getContent"
 import { getDirMetadata, getFileMetadata } from "@/lib/content/getMetadata"
@@ -46,6 +47,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
           {date} · {metadata?.readingTime} min read · {metadata?.wordCount} words
         </p>
       </ViewTransitionTitle>
+      <ShareMenu slug={slug} />
       <div className="max-w-none" dangerouslySetInnerHTML={{ __html: post.content }} />
     </article>
   )

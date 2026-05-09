@@ -1,3 +1,4 @@
+import { ShareMenu } from "@/components/ShareMenu"
 import { ViewTransitionTitle } from "@/components/ViewTransitionTitle"
 import getMdContent from "@/lib/content/getContent"
 import { getDirMetadata } from "@/lib/content/getMetadata"
@@ -42,6 +43,7 @@ export default async function NewsPost({ params }: { params: Promise<{ slug: str
       <ViewTransitionTitle name={`news-meta-${slug}`}>
         <p className="mb-8 text-sm text-zinc-500">{date}</p>
       </ViewTransitionTitle>
+      <ShareMenu slug={slug} />
       <div className="max-w-none" dangerouslySetInnerHTML={{ __html: post.content }} />
     </article>
   )
