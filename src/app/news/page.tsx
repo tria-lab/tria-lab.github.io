@@ -1,9 +1,9 @@
 import { A } from "@/components/Link"
-import { ViewTransitionTitle } from "@/components/ViewTransitionTitle"
 import { getDirMetadata } from "@/lib/content/getMetadata"
 import { openGraph, pageTitle } from "@/lib/utils"
 import { ArrowRight, Rss } from "lucide-react"
 import type { Metadata } from "next"
+import { ViewTransition } from "react"
 
 export const metadata: Metadata = {
   title: pageTitle("News"),
@@ -26,12 +26,12 @@ export default function News() {
         <div className="space-y-8">
           {posts.map(({ title, date, excerpt, slug }, index) => (
             <article key={index} className="border-b border-zinc-500 pb-8 last:border-0">
-              <ViewTransitionTitle name={`news-title-${slug}`}>
+              <ViewTransition name={`news-title-${slug}`}>
                 <h3 className="mb-1 text-xl font-semibold">{title}</h3>
-              </ViewTransitionTitle>
-              <ViewTransitionTitle name={`news-meta-${slug}`}>
+              </ViewTransition>
+              <ViewTransition name={`news-meta-${slug}`}>
                 <p className="mb-3 text-sm text-zinc-500">{date}</p>
-              </ViewTransitionTitle>
+              </ViewTransition>
               <p className="mb-3">{excerpt}</p>
               <A
                 href={`/news/${slug}`}

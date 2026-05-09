@@ -1,10 +1,10 @@
 import BlogMetadata from "@/app/blog/_components/metadata"
 import { A } from "@/components/Link"
-import { ViewTransitionTitle } from "@/components/ViewTransitionTitle"
 import { getDirMetadata } from "@/lib/content/getMetadata"
 import { openGraph, pageTitle } from "@/lib/utils"
 import { ArrowRight, Rss } from "lucide-react"
 import type { Metadata } from "next"
+import { ViewTransition } from "react"
 
 export const metadata: Metadata = {
   title: pageTitle("Blog"),
@@ -27,12 +27,12 @@ export default function Blog() {
         <div className="space-y-8">
           {posts.map((post, index) => (
             <article key={index} className="border-b border-zinc-500 pb-8 last:border-0">
-              <ViewTransitionTitle name={`blog-title-${post.slug}`}>
+              <ViewTransition name={`blog-title-${post.slug}`}>
                 <h3 className="mb-1 text-xl font-semibold">{post.title}</h3>
-              </ViewTransitionTitle>
-              <ViewTransitionTitle name={`blog-meta-${post.slug}`}>
+              </ViewTransition>
+              <ViewTransition name={`blog-meta-${post.slug}`}>
                 <BlogMetadata metadata={post} className="mb-3" />
-              </ViewTransitionTitle>
+              </ViewTransition>
               <p className="mb-3">{post.excerpt}</p>
               <A
                 href={`/blog/${post.slug}`}

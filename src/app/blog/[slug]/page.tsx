@@ -1,11 +1,11 @@
 import BlogMetadata from "@/app/blog/_components/metadata"
 import { ShareMenu } from "@/components/ShareMenu"
-import { ViewTransitionTitle } from "@/components/ViewTransitionTitle"
 import getMdContent from "@/lib/content/getContent"
 import { getDirMetadata, getFileMetadata } from "@/lib/content/getMetadata"
 import { openGraph, pageTitle } from "@/lib/utils"
 import type { Metadata } from "next"
 import { basename } from "path"
+import { ViewTransition } from "react"
 
 export async function generateMetadata({
   params,
@@ -40,12 +40,12 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
 
   return (
     <article className="mx-auto max-w-4xl px-6 py-12">
-      <ViewTransitionTitle name={`blog-title-${slug}`}>
+      <ViewTransition name={`blog-title-${slug}`}>
         <h1 className="mb-4 text-4xl font-bold">{post.data.title}</h1>
-      </ViewTransitionTitle>
-      <ViewTransitionTitle name={`blog-meta-${slug}`}>
+      </ViewTransition>
+      <ViewTransition name={`blog-meta-${slug}`}>
         <BlogMetadata metadata={{ ...metadata, date }} className="mb-8" />
-      </ViewTransitionTitle>
+      </ViewTransition>
       <ShareMenu slug={slug} />
       <div className="max-w-none" dangerouslySetInnerHTML={{ __html: post.content }} />
     </article>

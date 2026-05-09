@@ -1,9 +1,9 @@
 import { ShareMenu } from "@/components/ShareMenu"
-import { ViewTransitionTitle } from "@/components/ViewTransitionTitle"
 import getMdContent from "@/lib/content/getContent"
 import { getDirMetadata } from "@/lib/content/getMetadata"
 import { openGraph, pageTitle } from "@/lib/utils"
 import type { Metadata } from "next"
+import { ViewTransition } from "react"
 
 export async function generateMetadata({
   params,
@@ -37,12 +37,12 @@ export default async function NewsPost({ params }: { params: Promise<{ slug: str
 
   return (
     <article className="mx-auto max-w-4xl px-6 py-12">
-      <ViewTransitionTitle name={`news-title-${slug}`}>
+      <ViewTransition name={`news-title-${slug}`}>
         <h1 className="mb-4 text-4xl font-bold">{post.data.title}</h1>
-      </ViewTransitionTitle>
-      <ViewTransitionTitle name={`news-meta-${slug}`}>
+      </ViewTransition>
+      <ViewTransition name={`news-meta-${slug}`}>
         <p className="mb-8 text-sm text-zinc-500">{date}</p>
-      </ViewTransitionTitle>
+      </ViewTransition>
       <ShareMenu slug={slug} />
       <div className="max-w-none" dangerouslySetInnerHTML={{ __html: post.content }} />
     </article>
