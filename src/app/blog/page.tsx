@@ -1,3 +1,4 @@
+import BlogMetadata from "@/app/blog/_components/metadata"
 import { A } from "@/components/Link"
 import { ViewTransitionTitle } from "@/components/ViewTransitionTitle"
 import { getDirMetadata } from "@/lib/content/getMetadata"
@@ -24,19 +25,17 @@ export default function Blog() {
 
       <section className="mb-12">
         <div className="space-y-8">
-          {posts.map(({ title, date, readingTime, wordCount, excerpt, slug }, index) => (
+          {posts.map((post, index) => (
             <article key={index} className="border-b border-zinc-500 pb-8 last:border-0">
-              <ViewTransitionTitle name={`blog-title-${slug}`}>
-                <h3 className="mb-1 text-xl font-semibold">{title}</h3>
+              <ViewTransitionTitle name={`blog-title-${post.slug}`}>
+                <h3 className="mb-1 text-xl font-semibold">{post.title}</h3>
               </ViewTransitionTitle>
-              <ViewTransitionTitle name={`blog-meta-${slug}`}>
-                <p className="mb-3 text-sm text-zinc-500">
-                  {date} · {readingTime} min read · {wordCount} words
-                </p>
+              <ViewTransitionTitle name={`blog-meta-${post.slug}`}>
+                <BlogMetadata metadata={post} className="mb-3" />
               </ViewTransitionTitle>
-              <p className="mb-3">{excerpt}</p>
+              <p className="mb-3">{post.excerpt}</p>
               <A
-                href={`/blog/${slug}`}
+                href={`/blog/${post.slug}`}
                 className="flex text-blue-400 transition-all duration-100 hover:gap-2 hover:underline"
               >
                 Read <ArrowRight size={16} />

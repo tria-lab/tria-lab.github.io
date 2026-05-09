@@ -1,6 +1,7 @@
 import { A } from "@/components/Link"
 import Markdown from "@/components/Markdown"
 import getContent from "@/lib/content/getContent"
+import { getImageForName } from "@/lib/content/getMetadata"
 import { openGraph, pageTitle } from "@/lib/utils"
 import { SiGooglescholar, SiGithub } from "@icons-pack/react-simple-icons"
 import fs from "fs"
@@ -8,19 +9,7 @@ import { load } from "js-yaml"
 import { Mail, User } from "lucide-react"
 import type { Metadata } from "next"
 import Image from "next/image"
-import path from "path"
 import { z } from "zod"
-
-function getImageForName(name: string): string | undefined {
-  const matches = fs.readdirSync("public/team").filter((f) => path.parse(f).name === name)
-
-  if (matches.length === 0) return
-
-  if (matches.length > 1)
-    throw new Error(`Multiple images found for "${name}": ${matches.join(", ")}`)
-
-  return `/team/${matches[0]}`
-}
 
 export const metadata: Metadata = {
   title: pageTitle("Team"),

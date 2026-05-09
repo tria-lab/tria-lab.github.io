@@ -1,3 +1,4 @@
+import BlogMetadata from "@/app/blog/_components/metadata"
 import { ShareMenu } from "@/components/ShareMenu"
 import { ViewTransitionTitle } from "@/components/ViewTransitionTitle"
 import getMdContent from "@/lib/content/getContent"
@@ -43,9 +44,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
         <h1 className="mb-4 text-4xl font-bold">{post.data.title}</h1>
       </ViewTransitionTitle>
       <ViewTransitionTitle name={`blog-meta-${slug}`}>
-        <p className="mb-8 text-sm text-zinc-500">
-          {date} · {metadata?.readingTime} min read · {metadata?.wordCount} words
-        </p>
+        <BlogMetadata metadata={{ ...metadata, date }} className="mb-8" />
       </ViewTransitionTitle>
       <ShareMenu slug={slug} />
       <div className="max-w-none" dangerouslySetInnerHTML={{ __html: post.content }} />

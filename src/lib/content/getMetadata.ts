@@ -1,15 +1,27 @@
 import fs from "fs"
 import matter from "gray-matter"
-import { basename, dirname } from "path"
+import { basename, dirname, parse } from "path"
 import readingTime from "reading-time"
 
-type Metadata = {
+export type Metadata = {
   slug: string
   title: string
   date: string
   excerpt: string
   wordCount: number
   readingTime: number
+  authors: string[]
+}
+
+export function getImageForName(name: string): string | undefined {
+  const matches = fs.readdirSync("public/team").filter((f) => parse(f).name === name)
+
+  if (matches.length === 0) return
+
+  if (matches.length > 1)
+    throw new Error(`Multiple images found for "${name}": ${matches.join(", ")}`)
+
+  return `/team/${matches[0]}`
 }
 
 export function getDirMetadata(dir: string): Metadata[] {
@@ -43,5 +55,6 @@ export function getFileMetadata(filepath: string) {
     excerpt: matterResult.data.excerpt,
     wordCount: words,
     readingTime: Math.ceil(minutes),
+    authors: matterResult.data.authors ?? [],
   } satisfies Metadata
 }
