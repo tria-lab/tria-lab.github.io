@@ -1,4 +1,5 @@
 import { siteConfig } from "./config"
+import { IMAGE_HEIGHT, IMAGE_WIDTH } from "@/app/opengraph-image.png/route"
 import { clsx, type ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
 
@@ -26,5 +27,6 @@ export function openGraph({
     description: description || siteConfig.description,
     ...(url && { url }),
     ...(type && { type }),
+    images: [{ url: `/opengraph-image.png`, width: IMAGE_WIDTH, height: IMAGE_HEIGHT }],
   }
 }
