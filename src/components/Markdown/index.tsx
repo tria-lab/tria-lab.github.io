@@ -1,8 +1,9 @@
 import Heading from "./Heading"
 import Image from "./Image"
 import { A } from "@/components/Link"
+import rehypeShiki from "@shikijs/rehype"
 import type { ComponentProps } from "react"
-import ReactMarkdown from "react-markdown"
+import { MarkdownAsync } from "react-markdown"
 import { Components } from "react-markdown"
 import rehypeKatex from "rehype-katex"
 import remarkGfm from "remark-gfm"
@@ -42,8 +43,12 @@ const renderers: Components = {
     <A {...{ ...props, href: props.href || "" }}>{children}</A>
   ),
 
-  code: ({ className, children, node: _node, ...props }) =>
-    className ? children : renderInlineCode({ children, ...props }),
+  code: ({ className, children, node: _node, ...props }) => {
+    const isBlock =
+      className || (Array.isArray(children) && children.some((c) => typeof c === "object"))
+    if (isBlock) return <code {...props}>{children}</code>
+    return renderInlineCode({ children, ...props })
+  },
 
   h1: renderHeading(1),
   h2: renderHeading(2),
@@ -108,14 +113,14 @@ const renderers: Components = {
   pre: ({ children, node: _node, ...props }) => <pre {...props}>{children}</pre>,
 }
 
-export default function Markdown({ children }: { children: string; type?: string }) {
+export default async function Markdown({ children }: { children: string; type?: string }) {
   return (
-    <ReactMarkdown
+    <MarkdownAsync
       components={renderers}
       remarkPlugins={[[remarkGfm, { singleTilde: false }], remarkMath]}
-      rehypePlugins={[rehypeKatex]}
+      rehypePlugins={[rehypeKatex, [rehypeShiki, { theme: "github-light" }]]}
     >
       {children}
-    </ReactMarkdown>
+    </MarkdownAsync>
   )
 }

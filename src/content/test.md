@@ -72,6 +72,7 @@ You can inline code like `this`.
 You can also create code blocks:
 
 ```python
+# this is a python code
 def fibonacci(n):
     if n <= 1:
         return n
