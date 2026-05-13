@@ -1,3 +1,4 @@
+import { requireExactDependencyVersion } from "./src/lib/eslint-rules/require-exact-dependency-version.js"
 import { requireOpengraph } from "./src/lib/eslint-rules/require-opengraph.js"
 import nextVitals from "eslint-config-next/core-web-vitals"
 import nextTs from "eslint-config-next/typescript"
@@ -22,6 +23,7 @@ const eslintConfig = defineConfig([
       "better-tailwindcss": betterTailwind,
       "tria-lab": {
         rules: {
+          "require-exact-dependency-version": requireExactDependencyVersion,
           "require-opengraph": requireOpengraph,
         },
       },
@@ -42,6 +44,7 @@ const eslintConfig = defineConfig([
       // https://github.com/schoero/eslint-plugin-better-tailwindcss/blob/main/docs/rules/no-restricted-classes.md
       "better-tailwindcss/no-restricted-classes": "error",
 
+      "tria-lab/require-exact-dependency-version": "error",
       "tria-lab/require-opengraph": "error",
 
       "@typescript-eslint/no-unused-vars": [
