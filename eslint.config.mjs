@@ -43,6 +43,11 @@ const eslintConfig = defineConfig([
       "better-tailwindcss/no-restricted-classes": "error",
 
       "tria-lab/require-opengraph": "error",
+
+      "@typescript-eslint/no-unused-vars": [
+        "warn",
+        { varsIgnorePattern: "^_", argsIgnorePattern: "^_" },
+      ],
     },
   },
 ])

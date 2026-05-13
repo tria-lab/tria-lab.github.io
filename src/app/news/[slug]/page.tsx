@@ -39,7 +39,7 @@ export default async function NewsPost({ params }: { params: Promise<{ slug: str
   return (
     <article className="mx-auto max-w-4xl px-6 py-12">
       <ViewTransition name={`news-title-${slug}`}>
-        <h1 className="mb-4 text-4xl font-bold">{post.data.title}</h1>
+        <h1>{post.data.title}</h1>
       </ViewTransition>
       <ViewTransition name={`news-meta-${slug}`}>
         <p className="mb-8 text-sm text-zinc-500">{date}</p>

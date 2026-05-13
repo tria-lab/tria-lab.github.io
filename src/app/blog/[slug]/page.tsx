@@ -42,7 +42,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
   return (
     <article className="mx-auto max-w-4xl px-6 py-12">
       <ViewTransition name={`blog-title-${slug}`}>
-        <h1 className="mb-4 text-4xl font-bold">{post.data.title}</h1>
+        <h1>{post.data.title}</h1>
       </ViewTransition>
       <ViewTransition name={`blog-meta-${slug}`}>
         <BlogMetadata metadata={{ ...metadata, date }} className="mb-8" />
