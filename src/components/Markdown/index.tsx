@@ -4,7 +4,9 @@ import { A } from "@/components/Link"
 import type { ComponentProps } from "react"
 import ReactMarkdown from "react-markdown"
 import { Components } from "react-markdown"
+import rehypeKatex from "rehype-katex"
 import remarkGfm from "remark-gfm"
+import remarkMath from "remark-math"
 
 const renderInlineCode = ({ children, ...props }: ComponentProps<"code">) => {
   return (
@@ -82,7 +84,11 @@ const renderers: Components = {
 
 export default function Markdown({ children }: { children: string; type?: string }) {
   return (
-    <ReactMarkdown components={renderers} remarkPlugins={[[remarkGfm, { singleTilde: false }]]}>
+    <ReactMarkdown
+      components={renderers}
+      remarkPlugins={[[remarkGfm, { singleTilde: false }], remarkMath]}
+      rehypePlugins={[rehypeKatex]}
+    >
       {children}
     </ReactMarkdown>
   )

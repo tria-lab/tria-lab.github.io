@@ -3,6 +3,7 @@ import Navbar from "./_components/Navbar"
 import NavigationLoader from "./_components/NavigationLoader"
 import "./globals.css"
 import { Toaster } from "@/components/ui/sonner"
+import "katex/dist/katex.min.css"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
