@@ -53,6 +53,14 @@ const eslintConfig = defineConfig([
       ],
     },
   },
+  // https://github.com/vercel/next.js/issues/89764#issuecomment-3928272828
+  {
+    settings: {
+      react: {
+        version: "19",
+      },
+    },
+  },
 ])
 
 export default eslintConfig
