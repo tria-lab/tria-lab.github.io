@@ -6,7 +6,7 @@
       "name": "tria-lab.github.io",
       "dependencies": {
         "@icons-pack/react-simple-icons": "13.13.0",
-        "@shikijs/rehype": "^4.0.2",
+        "@shikijs/rehype": "4.0.2",
         "@stefanprobst/rehype-shiki": "2.2.1",
         "@vercel/og": "1.0.0",
         "clsx": "2.1.1",
