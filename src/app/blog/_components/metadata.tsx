@@ -1,5 +1,7 @@
-import { getImageForName, type Metadata } from "@/lib/content/getMetadata"
+import { type Metadata } from "@/lib/content/getMetadata"
+import { getTeamMemberById, getTeamMemberImage } from "@/lib/content/getTeam"
 import Image from "next/image"
+import Link from "next/link"
 import { Fragment } from "react"
 
 type BlogMetadataProps = {
@@ -16,24 +18,29 @@ export default function BlogMetadata({ metadata, className = "" }: BlogMetadataP
         <div className="flex items-center gap-2">
           <span>
             by{" "}
-            {authors.map((a, i) => {
-              const imageSrc = getImageForName(a)
+            {authors.map((uid, i) => {
+              const author = getTeamMemberById(uid)!
+              const imageSrc = getTeamMemberImage(author.uid)
+
               return (
-                <Fragment key={a}>
+                <Fragment key={uid}>
                   {i > 0 &&
                     (i === authors.length - 1 ? (authors.length > 2 ? ", and " : " and ") : ", ")}
-                  <span className="inline-flex items-center gap-2">
-                    {a}
+                  <Link
+                    href={`/team/${uid}`}
+                    className="inline-flex items-center gap-2 hover:text-hongik-medium-blue hover:underline"
+                  >
+                    {author.nameKo}
                     {imageSrc && (
                       <Image
                         src={imageSrc}
-                        alt={a}
+                        alt={author.nameKo}
                         width={20}
                         height={20}
                         className="rounded-full"
                       />
                     )}
-                  </span>
+                  </Link>
                 </Fragment>
               )
             })}

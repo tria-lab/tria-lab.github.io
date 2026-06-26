@@ -1,45 +1,21 @@
 import { A } from "@/components/Link"
 import Markdown from "@/components/Markdown"
 import getContent from "@/lib/content/getContent"
-import { getImageForName } from "@/lib/content/getMetadata"
+import { getTeam, getTeamMemberImage } from "@/lib/content/getTeam"
 import { openGraph, pageTitle } from "@/lib/utils"
 import { SiGooglescholar, SiGithub } from "@icons-pack/react-simple-icons"
-import fs from "fs"
-import { load } from "js-yaml"
 import { Mail, User } from "lucide-react"
 import type { Metadata } from "next"
 import Image from "next/image"
-import { z } from "zod"
+import Link from "next/link"
 
 export const metadata: Metadata = {
   title: pageTitle("Team"),
   openGraph: openGraph({ title: "Team" }),
 }
 
-const studentSchema = z.object({
-  nameKo: z.string(),
-  nameEn: z.string().optional(),
-  department: z.string().optional(),
-  researchArea: z.string().optional(),
-  github: z.url().optional(),
-})
-
-const professorSchema = z.object({
-  nameKo: z.string(),
-  nameEn: z.string().optional(),
-  email: z.email(),
-  googleScholar: z.url().optional(),
-})
-
-const teamSchema = z.object({
-  professors: z.array(professorSchema),
-  students: z.array(studentSchema),
-})
-
 export default function Team() {
-  const { professors, students } = teamSchema.parse(
-    load(fs.readFileSync("src/content/team.yaml", "utf8")),
-  )
+  const { professors, students } = getTeam()
   const teamMd = getContent("team")
 
   return (
@@ -54,32 +30,69 @@ export default function Team() {
 
       <section className="mb-12">
         <h2 className="mb-6 text-2xl font-semibold">Professors</h2>
-        <div className="grid gap-6">
-          {professors.map(({ nameKo, email, googleScholar }) => (
-            <div key={email} className="rounded-lg border p-6">
-              <h3 className="inline text-xl font-semibold">{nameKo}</h3>{" "}
-              {googleScholar && (
-                <A href={googleScholar} title="Google Scholar" noIcon>
-                  <SiGooglescholar />
-                </A>
-              )}
-              <ul>
-                <li className="flex gap-2">
-                  <Mail /> <A href={`mailto:${email}`}>{email}</A>
-                </li>
-              </ul>
-            </div>
-          ))}
+        <div className="grid gap-6 md:grid-cols-2">
+          {professors.map(({ uid, nameKo, email, googleScholar }) => {
+            const imageSrc = getTeamMemberImage(uid)
+
+            return (
+              <div
+                key={uid}
+                className="group relative rounded-lg border p-6 transition-colors hover:border-hongik-medium-blue"
+              >
+                <Link
+                  href={`/team/${uid}`}
+                  className="absolute inset-0 rounded-lg"
+                  aria-label={`${nameKo} profile`}
+                />
+                {imageSrc ? (
+                  <Image
+                    src={imageSrc}
+                    alt={nameKo}
+                    width={1000}
+                    height={750}
+                    className="mb-4 aspect-3/4"
+                  />
+                ) : (
+                  <div className="mb-4 flex aspect-3/4 items-center justify-center">
+                    <User className="size-full text-gray-200" strokeWidth={0.5} />
+                  </div>
+                )}
+                <h3 className="inline text-xl font-semibold">{nameKo}</h3>{" "}
+                {googleScholar && (
+                  <A href={googleScholar} title="Google Scholar" noIcon className="relative z-10">
+                    <SiGooglescholar />
+                  </A>
+                )}
+                <ul>
+                  <li className="flex gap-2">
+                    <Mail />{" "}
+                    <A href={`mailto:${email}`} className="relative z-10">
+                      {email}
+                    </A>
+                  </li>
+                </ul>
+              </div>
+            )
+          })}
         </div>
       </section>
 
       <section className="mb-12">
         <h2 className="mb-6 text-2xl font-semibold">Students</h2>
         <div className="grid gap-6 md:grid-cols-2">
-          {students.map(({ nameKo, department, researchArea, github }) => {
-            const imageSrc = getImageForName(nameKo)
+          {students.map(({ uid, nameKo, department, researchArea, github }) => {
+            const imageSrc = getTeamMemberImage(uid)
+
             return (
-              <div key={nameKo} className="rounded-lg border p-6">
+              <div
+                key={uid}
+                className="group relative rounded-lg border p-6 transition-colors hover:border-hongik-medium-blue"
+              >
+                <Link
+                  href={`/team/${uid}`}
+                  className="absolute inset-0 rounded-lg"
+                  aria-label={`${nameKo} profile`}
+                />
                 {imageSrc ? (
                   <Image
                     src={imageSrc}
@@ -97,7 +110,12 @@ export default function Team() {
                 <div className="mb-4 flex h-10 items-center">
                   <h3 className="inline text-xl font-semibold">{nameKo}</h3>
                   {github && (
-                    <A href={github} title="Github" noIcon className="ml-2 inline-block">
+                    <A
+                      href={github}
+                      title="Github"
+                      noIcon
+                      className="relative z-10 ml-2 inline-block"
+                    >
                       <SiGithub />
                     </A>
                   )}

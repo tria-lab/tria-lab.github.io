@@ -1,0 +1,26 @@
+diff --git a/dist/esm/server/dev/next-dev-server.js b/dist/esm/server/dev/next-dev-server.js
+index a40156fd38f39241517029aa9fb12e7b61bd8eb5..fa108d127fbf8b3c6ac05cae976cbe59a13eddff 100644
+--- a/dist/esm/server/dev/next-dev-server.js
++++ b/dist/esm/server/dev/next-dev-server.js
+@@ -535,7 +535,7 @@ export default class DevServer extends Server {
+                             configurable: true
+                         });
+                     }
+-                    if (!prerenderedRoutes.some((item)=>item.pathname === urlPathname)) {
++                    if (!prerenderedRoutes.some((item)=>item.pathname === decodeURIComponent(urlPathname))) {
+                         throw Object.defineProperty(new Error(`Page "${page}" is missing param "${pathname}" in "generateStaticParams()", which is required with "output: export" config.`), "__NEXT_ERROR_CODE", {
+                             value: "E443",
+                             enumerable: false,
+diff --git a/dist/server/dev/next-dev-server.js b/dist/server/dev/next-dev-server.js
+index d0ec8291d06bf6dfddf53d8df680121c9de709c0..1663b6d1ac6b68bd640a7e16aa0ce7970383bd84 100644
+--- a/dist/server/dev/next-dev-server.js
++++ b/dist/server/dev/next-dev-server.js
+@@ -591,7 +591,7 @@ class DevServer extends _nextserver.default {
+                             configurable: true
+                         });
+                     }
+-                    if (!prerenderedRoutes.some((item)=>item.pathname === urlPathname)) {
++                    if (!prerenderedRoutes.some((item)=>item.pathname === decodeURIComponent(urlPathname))) {
+                         throw Object.defineProperty(new Error(`Page "${page}" is missing param "${pathname}" in "generateStaticParams()", which is required with "output: export" config.`), "__NEXT_ERROR_CODE", {
+                             value: "E443",
+                             enumerable: false,

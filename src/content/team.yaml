@@ -1,82 +1,100 @@
+# names can have duplicates, `uid`s can not.
+
 professors:
-  - nameKo: 장국진
+  - uid: 장국진
+    nameKo: 장국진
     nameEn: Kukjin Jang # cSpell: disable-line
     email: jangkj@hongik.ac.kr
     googleScholar: https://scholar.google.com/citations?user=HFajZtgAAAAJ
 students: # 한글 이름 가나다순
-  - nameKo: 김범수
+  - uid: 김범수
+    nameKo: 김범수
     # nameEn:
     # department:
     researchArea: Data mining / Machine Learning
     github: https://github.com/Bum-niverse
 
-  - nameKo: 김예송
+  - uid: 김예송
+    nameKo: 김예송
     # nameEn: # cSpell: disable-line
     # department:
     # researchArea:
 
-  - nameKo: 김재우
+  - uid: 김재우
+    nameKo: 김재우
     nameEn: Jaewoo Kim # cSpell: disable-line
     # department:
     researchArea: LLM Inference optimization / TinyML / EfficientML
     github: https://github.com/Bias92
 
-  - nameKo: 김형준
+  - uid: 김형준
+    nameKo: 김형준
     # nameEn:
     # department:
     # researchArea:
 
-  - nameKo: 김휘수
+  - uid: 김휘수
+    nameKo: 김휘수
     nameEn: Hwisu Kim # cSpell: disable-line
     department: Industrial & Data Engineering / Computer Engineering
     researchArea: Spatiotemporal GNN-based Urban Flooding Detection
 
-  - nameKo: 박주민
+  - uid: 박주민
+    nameKo: 박주민
     nameEn: Joomin Park # cSpell: disable-line
     department: Computer Engineering
     researchArea: ECG Signal Analysis / Machine Learning / Biomedical Signal Processing
 
-  - nameKo: 배나영
+  - uid: 배나영
+    nameKo: 배나영
     # nameEn: # cSpell: disable-line
     # department:
     # researchArea:
 
-  - nameKo: 소정호
+  - uid: 소정호
+    nameKo: 소정호
     # nameEn: # cSpell: disable-line
     department: Computer Engineering
     # researchArea:
 
-  - nameKo: 손기배
+  - uid: 손기배
+    nameKo: 손기배
     # nameEn: # cSpell: disable-line
     # department:
     # researchArea:
 
-  - nameKo: 윤서준
+  - uid: 윤서준
+    nameKo: 윤서준
     # nameEn: # cSpell: disable-line
     # department:
     # researchArea:
 
-  - nameKo: 이광호
+  - uid: 이광호
+    nameKo: 이광호
     # nameEn: # cSpell: disable-line
     # department:
     # researchArea:
 
-  - nameKo: 이도현
+  - uid: 이도현
+    nameKo: 이도현
     # nameEn: # cSpell: disable-line
     # department:
     # researchArea:
 
-  - nameKo: 이태훈
+  - uid: 이태훈
+    nameKo: 이태훈
     # nameEn: # cSpell: disable-line
     # department:
     # researchArea:
 
-  - nameKo: 장문경
+  - uid: 장문경
+    nameKo: 장문경
     nameEn: Moonkyoung Jang # cSpell: disable-line
     department: Computer Engineering
     researchArea: Diffusion Models / Controllable Image Generation
 
-  - nameKo: 홍진우
+  - uid: 홍진우
+    nameKo: 홍진우
     # nameEn: # cSpell: disable-line
     # department:
     # researchArea:
