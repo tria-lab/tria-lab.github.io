@@ -34,14 +34,18 @@ export default function Publications() {
 
       <section className="mb-12">
         <div className="space-y-8">
-          {publications.map(({ title, authors, date, link }, index) => (
-            <div key={index} className="border-b pb-6">
-              <h3 className="mb-2 text-xl font-medium">{title}</h3>
-              <p className="mb-2 text-zinc-600">{authors}</p>
-              <p className="mb-2 text-zinc-600">{date}</p>
-              <A href={link}>Read</A>
-            </div>
-          ))}
+          {publications.length > 0 ? (
+            publications.map(({ title, authors, date, link }, index) => (
+              <div key={index} className="border-b pb-6">
+                <h3 className="mb-2 text-xl font-medium">{title}</h3>
+                <p className="mb-2 text-zinc-600">{authors}</p>
+                <p className="mb-2 text-zinc-600">{date}</p>
+                <A href={link}>Read</A>
+              </div>
+            ))
+          ) : (
+            <p className="text-lg text-zinc-600">no publications yet</p>
+          )}
         </div>
       </section>
     </div>
