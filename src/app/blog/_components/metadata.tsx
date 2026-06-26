@@ -1,5 +1,6 @@
 import { getImageForName, type Metadata } from "@/lib/content/getMetadata"
 import Image from "next/image"
+import { Fragment } from "react"
 
 type BlogMetadataProps = {
   metadata: Metadata
@@ -13,17 +14,30 @@ export default function BlogMetadata({ metadata, className = "" }: BlogMetadataP
     <div className={`flex items-center gap-3 text-sm text-zinc-500 ${className}`}>
       {authors.length > 0 && (
         <div className="flex items-center gap-2">
-          {authors.map((a, i) => {
-            const imageSrc = getImageForName(a)
-            return (
-              <span key={i} className="flex items-center gap-2">
-                by {a}
-                {imageSrc && (
-                  <Image src={imageSrc} alt={a} width={20} height={20} className="rounded-full" />
-                )}
-              </span>
-            )
-          })}
+          <span>
+            by{" "}
+            {authors.map((a, i) => {
+              const imageSrc = getImageForName(a)
+              return (
+                <Fragment key={a}>
+                  {i > 0 &&
+                    (i === authors.length - 1 ? (authors.length > 2 ? ", and " : " and ") : ", ")}
+                  <span className="inline-flex items-center gap-2">
+                    {a}
+                    {imageSrc && (
+                      <Image
+                        src={imageSrc}
+                        alt={a}
+                        width={20}
+                        height={20}
+                        className="rounded-full"
+                      />
+                    )}
+                  </span>
+                </Fragment>
+              )
+            })}
+          </span>
           <span>·</span>
         </div>
       )}
