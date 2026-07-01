@@ -41,6 +41,8 @@
 
 html,
 body {
+  scroll-behavior: smooth;
+
   /*
     Prevent awkward word wrapping in Korean.
     See https://www.youtube.com/watch?v=XJl7dYWZlkw
