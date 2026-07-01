@@ -23,7 +23,7 @@ export default function Home() {
           </strong>
         </p>
         <p className="mx-auto mb-8 max-w-2xl text-lg">
-          Join our <A href="/team">Team</A>
+          Meet our <A href="/team">Team</A>
         </p>
       </section>
     </div>
