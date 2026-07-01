@@ -80,3 +80,11 @@ def fibonacci(n):
 
 print(f"Fibonacci(10) = {fibonacci(10)}")
 ```
+
+## Image
+
+![width=320](/team/김지민.png)
+
+## YouTube
+
+https://www.youtube.com/watch?v=kCc8FmEb1nY

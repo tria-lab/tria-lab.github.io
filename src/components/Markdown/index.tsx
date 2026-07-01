@@ -1,5 +1,6 @@
 import Heading from "./Heading"
-import Image from "./Image"
+import Image, { YouTubeEmbed } from "./Image"
+import { isYouTubeUrl } from "./youtube"
 import { A } from "@/components/Link"
 import rehypeShiki from "@shikijs/rehype"
 import type { ComponentProps } from "react"
@@ -70,6 +71,19 @@ const renderHeading = (level: number, slugs: Map<string, number>) => {
 const createRenderers = (): Components => {
   const slugs = new Map<string, number>()
 
+  const getStandaloneYouTubeUrl = (children: React.ReactNode) => {
+    const nodes = React.Children.toArray(children)
+    if (nodes.length !== 1) return undefined
+
+    const child = nodes[0]
+    if (!React.isValidElement<{ children?: React.ReactNode; href?: string }>(child))
+      return undefined
+
+    const href = child.props.href
+    const text = getTextContent(child.props.children).trim()
+    return href && text === href && isYouTubeUrl(href) ? href : undefined
+  }
+
   return {
     a: ({ children, node: _node, ...props }) => (
       <A {...{ ...props, href: props.href || "" }}>{children}</A>
@@ -136,11 +150,16 @@ const createRenderers = (): Components => {
       </ul>
     ),
 
-    p: ({ children, node: _node, ...props }) => (
-      <p className="mb-4 text-base/8" {...props}>
-        {children}
-      </p>
-    ),
+    p: ({ children, node: _node, ...props }) => {
+      const youtubeUrl = getStandaloneYouTubeUrl(children)
+      if (youtubeUrl) return <YouTubeEmbed src={youtubeUrl} />
+
+      return (
+        <p className="mb-4 text-base/8" {...props}>
+          {children}
+        </p>
+      )
+    },
 
     pre: ({ children, node: _node, ...props }) => <pre {...props}>{children}</pre>,
   }
