@@ -41,32 +41,35 @@ export default function Team() {
               >
                 <Link
                   href={`/team/${uid}`}
-                  className="absolute inset-0 rounded-lg"
+                  className="absolute inset-0 z-10 rounded-lg"
                   aria-label={`${nameKo} profile`}
                 />
-                {imageSrc ? (
-                  <Image
-                    src={imageSrc}
-                    alt={nameKo}
-                    width={1000}
-                    height={750}
-                    className="mb-4 aspect-3/4"
-                  />
-                ) : (
-                  <div className="mb-4 flex aspect-3/4 items-center justify-center">
-                    <User className="size-full text-gray-200" strokeWidth={0.5} />
-                  </div>
-                )}
+                <div className="mb-4 flex aspect-3/4 overflow-hidden">
+                  {imageSrc ? (
+                    <Image
+                      src={imageSrc}
+                      alt={nameKo}
+                      width={1000}
+                      height={750}
+                      className="size-full object-cover transition-transform duration-300 ease-out group-hover:scale-[1.03]"
+                    />
+                  ) : (
+                    <User
+                      className="size-full text-gray-200 transition-transform duration-300 ease-out group-hover:scale-[1.03]"
+                      strokeWidth={0.5}
+                    />
+                  )}
+                </div>
                 <h3 className="inline text-xl font-semibold">{nameKo}</h3>{" "}
                 {googleScholar && (
-                  <A href={googleScholar} title="Google Scholar" noIcon className="relative z-10">
+                  <A href={googleScholar} title="Google Scholar" noIcon className="relative z-20">
                     <SiGooglescholar />
                   </A>
                 )}
                 <ul>
                   <li className="flex gap-2">
                     <Mail />{" "}
-                    <A href={`mailto:${email}`} className="relative z-10">
+                    <A href={`mailto:${email}`} className="relative z-20">
                       {email}
                     </A>
                   </li>
@@ -90,22 +93,25 @@ export default function Team() {
               >
                 <Link
                   href={`/team/${uid}`}
-                  className="absolute inset-0 rounded-lg"
+                  className="absolute inset-0 z-10 rounded-lg"
                   aria-label={`${nameKo} profile`}
                 />
-                {imageSrc ? (
-                  <Image
-                    src={imageSrc}
-                    alt={nameKo}
-                    width={1000}
-                    height={750}
-                    className="mb-4 aspect-3/4"
-                  />
-                ) : (
-                  <div className="mb-4 flex aspect-3/4 items-center justify-center">
-                    <User className="size-full text-gray-200" strokeWidth={0.5} />
-                  </div>
-                )}
+                <div className="mb-4 flex aspect-3/4 overflow-hidden">
+                  {imageSrc ? (
+                    <Image
+                      src={imageSrc}
+                      alt={nameKo}
+                      width={1000}
+                      height={750}
+                      className="size-full object-cover transition-transform duration-300 ease-out group-hover:scale-[1.03]"
+                    />
+                  ) : (
+                    <User
+                      className="size-full text-gray-200 transition-transform duration-300 ease-out group-hover:scale-[1.03]"
+                      strokeWidth={0.5}
+                    />
+                  )}
+                </div>
 
                 <div className="mb-4 flex h-10 items-center">
                   <h3 className="inline text-xl font-semibold">{nameKo}</h3>
@@ -114,7 +120,7 @@ export default function Team() {
                       href={github}
                       title="Github"
                       noIcon
-                      className="relative z-10 ml-2 inline-block"
+                      className="relative z-20 ml-2 inline-block"
                     >
                       <SiGithub />
                     </A>
