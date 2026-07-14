@@ -1,3 +1,4 @@
+import ContactMap from "./ContactMap"
 import { A } from "@/components/Link"
 import { openGraph, pageTitle } from "@/lib/utils"
 import fs from "fs"
@@ -35,6 +36,8 @@ export default function Contact() {
             <A href={`mailto:${email}`}>{email}</A>
           </div>
         </div>
+
+        <ContactMap />
       </section>
     </div>
   )
