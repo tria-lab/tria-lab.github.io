@@ -1,12 +1,15 @@
+import BlogMetadata from "@/app/blog/_components/metadata"
 import { A } from "@/components/Link"
+import { getDirMetadata } from "@/lib/content/getMetadata"
 import { getTeam, getTeamMemberById, getTeamMemberImage } from "@/lib/content/getTeam"
 import { openGraph, pageTitle } from "@/lib/utils"
 import { SiGooglescholar, SiGithub } from "@icons-pack/react-simple-icons"
-import { Mail, User } from "lucide-react"
+import { ArrowRight, Mail, User } from "lucide-react"
 import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
+import { ViewTransition } from "react"
 
 export async function generateStaticParams() {
   const { professors, students } = getTeam()
@@ -40,6 +43,9 @@ export default async function TeamMemberPage({ params }: { params: Promise<{ uid
 
   const imageSrc = getTeamMemberImage(member.uid)
   const isProfessor = "email" in member
+  const posts = getDirMetadata("blog").filter(
+    (post) => post.authors.includes(member.uid) || post.authors.includes(member.nameKo),
+  )
 
   return (
     <div className="mx-auto max-w-4xl px-6 py-12">
@@ -111,6 +117,31 @@ export default async function TeamMemberPage({ params }: { params: Promise<{ uid
           </div>
         </div>
       </div>
+
+      {posts.length > 0 && (
+        <section className="mt-12">
+          <h2 className="mb-6 text-2xl font-bold">Blog Posts</h2>
+          <div className="space-y-8">
+            {posts.map((post) => (
+              <article key={post.slug} className="border-b border-zinc-500 pb-8 last:border-0">
+                <ViewTransition name={`blog-title-${post.slug}`}>
+                  <h3 className="mb-1 text-xl font-semibold">{post.title}</h3>
+                </ViewTransition>
+                <ViewTransition name={`blog-meta-${post.slug}`}>
+                  <BlogMetadata metadata={post} className="mb-3" />
+                </ViewTransition>
+                <p className="mb-3">{post.excerpt}</p>
+                <A
+                  href={`/blog/${post.slug}`}
+                  className="flex text-blue-400 transition-all duration-100 hover:gap-2 hover:underline"
+                >
+                  Read <ArrowRight size={16} />
+                </A>
+              </article>
+            ))}
+          </div>
+        </section>
+      )}
     </div>
   )
 }
