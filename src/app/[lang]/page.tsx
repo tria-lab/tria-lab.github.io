@@ -1,12 +1,16 @@
 import BlogMetadata from "@/components/BlogMetadata"
 import { A } from "@/components/Link"
-import { formatDate, getTranslation, hasLocale, localePath } from "@/i18n/config"
+import { formatDate, getTranslation, hasLocale, localePath, locales } from "@/i18n/config"
 import { localizedMetadata } from "@/i18n/metadata"
 import { getDirMetadata } from "@/lib/content/getMetadata"
 import { getPublications } from "@/lib/content/getPublications"
 import { getTeam } from "@/lib/content/getTeam"
 import { ArrowRight } from "lucide-react"
 import type { Metadata } from "next"
+
+export function generateStaticParams() {
+  return locales.map((lang) => ({ lang }))
+}
 
 export async function generateMetadata({ params }: PageProps<"/[lang]">): Promise<Metadata> {
   const { lang } = await params
