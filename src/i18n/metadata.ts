@@ -22,6 +22,7 @@ export function localizedMetadata({
       languages: {
         en: localePath("en", path),
         ko: localePath("ko", path),
+        "x-default": localePath("en", path),
       },
     },
     openGraph: openGraph({ lang, title, description, type, url: localePath(lang, path) }),
