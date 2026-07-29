@@ -2,6 +2,7 @@
 
 import { cn } from "@/lib/utils"
 import React from "react"
+import { useTranslation } from "react-i18next"
 
 const styles = {
   1: "mb-6 text-4xl font-bold",
@@ -19,9 +20,10 @@ export default function Heading({
   id,
   ...props
 }: React.HTMLAttributes<HTMLHeadingElement> & { level: number }) {
+  const { t } = useTranslation()
   const anchor = id ? (
     <a
-      aria-label={`Link to ${id}`}
+      aria-label={t("common.headingLink", { heading: id })}
       className="mr-2 text-black/30 no-underline transition-colors hover:text-black"
       href={`#${id}`}
     >

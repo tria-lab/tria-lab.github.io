@@ -6,6 +6,11 @@ TRIA: **TR**ustworthy **I**ntelligence for **A**utonomous systems Laboratory
 
 This repository contains source code for the TRIA lab website.
 
+## Configuration
+
+- [`./src/content`](./src/content/) - Content
+- [`./src/i18n/resources.ts`](./src/i18n/resources.ts) - Translations
+
 ## Resources
 
 This codebase assumes you are equipped with web development basics:

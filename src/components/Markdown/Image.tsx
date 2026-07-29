@@ -4,6 +4,7 @@ import { getYouTubeEmbedUrl, isYouTubeUrl } from "./youtube"
 import { cn } from "@/lib/utils"
 import Image from "next/image"
 import { useState } from "react"
+import { useTranslation } from "react-i18next"
 
 const getImageMetadata = (alt: string) => {
   const metadataPattern = /(?:^|\s)(?:width|w)=(\d+)(?=\s|$)/i
@@ -22,13 +23,14 @@ const getImageSrc = (src: string) => {
 }
 
 export function YouTubeEmbed({ alt, src }: { alt?: string; src: string }) {
+  const { t } = useTranslation()
   const embedUrl = getYouTubeEmbedUrl(src)
 
   return (
     <span className="relative block h-0 pt-6 pb-[56.25%]">
       <iframe
         src={embedUrl}
-        title={alt || "YouTube video"}
+        title={alt || t("common.youtubeVideo")}
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen
         className="absolute top-0 left-0 size-full border-0"
@@ -38,6 +40,7 @@ export function YouTubeEmbed({ alt, src }: { alt?: string; src: string }) {
 }
 
 export default function ImageNode({ alt, src }: { alt: string; src: string }) {
+  const { t } = useTranslation()
   const [isLoaded, setIsLoaded] = useState(false)
   const image = getImageMetadata(alt)
   const resolvedSrc = getImageSrc(src || "/default-image.jpg")
@@ -58,7 +61,7 @@ export default function ImageNode({ alt, src }: { alt: string; src: string }) {
       <Image
         className="h-auto w-full object-cover brightness-90 transition-all duration-300 hover:brightness-100"
         src={resolvedSrc}
-        alt={image.alt || "Image"}
+        alt={image.alt || t("common.image")}
         unoptimized
         onLoad={() => setIsLoaded(true)}
         sizes="(max-width: 800px) 100vw, 800px"

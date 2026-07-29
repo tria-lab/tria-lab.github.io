@@ -1,3 +1,4 @@
+import type { Locale } from "@/i18n/config"
 import fs from "fs"
 import matter from "gray-matter"
 import { basename, dirname } from "path"
@@ -13,16 +14,16 @@ export type Metadata = {
   authors: string[]
 }
 
-export function getDirMetadata(dir: string): Metadata[] {
+export function getDirMetadata(lang: Locale, dir: string): Metadata[] {
   return fs
-    .readdirSync(`src/content/${dir}/`)
+    .readdirSync(`src/content/${lang}/${dir}/`)
     .filter((file) => file.endsWith(".md"))
-    .map((filename) => getFileMetadata(`${dir}/${filename.slice(0, -3)}`))
+    .map((filename) => getFileMetadata(lang, `${dir}/${filename.slice(0, -3)}`))
     .sort((a, b) => new Date(b.date ?? 0).getTime() - new Date(a.date ?? 0).getTime())
 }
 
-export function getFileMetadata(filepath: string) {
-  const filePath = `src/content/${filepath}.md`
+export function getFileMetadata(lang: Locale, filepath: string) {
+  const filePath = `src/content/${lang}/${filepath}.md`
   const content = fs.readFileSync(filePath, "utf8")
   const matterResult = matter(content)
 

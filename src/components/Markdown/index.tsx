@@ -2,6 +2,7 @@ import Heading from "./Heading"
 import Image, { YouTubeEmbed } from "./Image"
 import { isYouTubeUrl } from "./youtube"
 import { A } from "@/components/Link"
+import { type Locale, localePath } from "@/i18n/config"
 import rehypeShiki from "@shikijs/rehype"
 import type { ComponentProps } from "react"
 import React from "react"
@@ -68,7 +69,7 @@ const renderHeading = (level: number, slugs: Map<string, number>) => {
   return Component
 }
 
-const createRenderers = (): Components => {
+const createRenderers = (lang: Locale): Components => {
   const slugs = new Map<string, number>()
 
   const getStandaloneYouTubeUrl = (children: React.ReactNode) => {
@@ -85,9 +86,11 @@ const createRenderers = (): Components => {
   }
 
   return {
-    a: ({ children, node: _node, ...props }) => (
-      <A {...{ ...props, href: props.href || "" }}>{children}</A>
-    ),
+    a: ({ children, node: _node, ...props }) => {
+      const href = props.href || ""
+      const localizedHref = href.startsWith("/") ? localePath(lang, href) : href
+      return <A {...{ ...props, href: localizedHref }}>{children}</A>
+    },
 
     code: ({ className, children, node: _node, ...props }) => {
       const isBlock =
@@ -165,10 +168,10 @@ const createRenderers = (): Components => {
   }
 }
 
-export default async function Markdown({ children }: { children: string; type?: string }) {
+export default async function Markdown({ children, lang }: { children: string; lang: Locale }) {
   return (
     <MarkdownAsync
-      components={createRenderers()}
+      components={createRenderers(lang)}
       remarkPlugins={[[remarkGfm, { singleTilde: false }], remarkMath]}
       rehypePlugins={[rehypeKatex, [rehypeShiki, { theme: "github-light" }]]}
     >

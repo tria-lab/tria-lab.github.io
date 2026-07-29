@@ -10,91 +10,121 @@ students: # 한글 이름 가나다순
   - uid: 김범수
     nameKo: 김범수
     # nameEn:
-    # department:
-    researchArea: Data mining / Machine Learning
+    # departmentEn:
+    # departmentKo:
+    researchAreaEn: Data mining / Machine Learning
+    researchAreaKo: 데이터 마이닝 / 머신러닝
     github: https://github.com/Bum-niverse
 
   - uid: 김예송
     nameKo: 김예송
     # nameEn: # cSpell: disable-line
-    # department:
-    # researchArea:
+    # departmentEn:
+    # departmentKo:
+    # researchAreaEn:
+    # researchAreaKo:
 
   - uid: 김재우
     nameKo: 김재우
     nameEn: Jaewoo Kim # cSpell: disable-line
-    # department:
-    researchArea: LLM Inference optimization / TinyML / EfficientML
+    # departmentEn:
+    # departmentKo:
+    researchAreaEn: LLM Inference optimization / TinyML / EfficientML
+    researchAreaKo: LLM 추론 최적화 / TinyML / EfficientML
     github: https://github.com/Bias92
 
   - uid: 김형준
     nameKo: 김형준
     # nameEn:
-    # department:
-    # researchArea:
+    # departmentEn:
+    # departmentKo:
+    # researchAreaEn:
+    # researchAreaKo:
 
   - uid: 김휘수
     nameKo: 김휘수
     nameEn: Hwisu Kim # cSpell: disable-line
-    department: Industrial & Data Engineering / Computer Engineering
-    researchArea: Spatiotemporal GNN-based Urban Flooding Detection
+    departmentEn: Industrial & Data Engineering / Computer Engineering
+    departmentKo: 산업·데이터공학 / 컴퓨터공학
+    researchAreaEn: Spatiotemporal GNN-based Urban Flooding Detection
+    researchAreaKo: 시공간 GNN 기반 도시 침수 탐지
 
   - uid: 박주민
     nameKo: 박주민
     nameEn: Joomin Park # cSpell: disable-line
-    department: Computer Engineering
-    researchArea: ECG Signal Analysis / Machine Learning / Biomedical Signal Processing
+    departmentEn: Computer Engineering
+    departmentKo: 컴퓨터공학
+    researchAreaEn: ECG Signal Analysis / Machine Learning / Biomedical Signal Processing
+    researchAreaKo: 심전도 신호 분석 / 머신러닝 / 생체 신호 처리
 
   - uid: 배나영
     nameKo: 배나영
     # nameEn: # cSpell: disable-line
-    # department:
-    # researchArea:
+    # departmentEn:
+    # departmentKo:
+    # researchAreaEn:
+    # researchAreaKo:
 
   - uid: 소정호
     nameKo: 소정호
     # nameEn: # cSpell: disable-line
-    department: Computer Engineering
-    # researchArea:
+    departmentEn: Computer Engineering
+    departmentKo: 컴퓨터공학
+    # researchAreaEn:
+    # researchAreaKo:
 
   - uid: 손기배
     nameKo: 손기배
     # nameEn: # cSpell: disable-line
-    # department:
-    # researchArea:
+    # departmentEn:
+    # departmentKo:
+    # researchAreaEn:
+    # researchAreaKo:
 
   - uid: 윤서준
     nameKo: 윤서준
     # nameEn: # cSpell: disable-line
-    # department:
-    # researchArea:
+    # departmentEn:
+    # departmentKo:
+    # researchAreaEn:
+    # researchAreaKo:
 
   - uid: 이광호
     nameKo: 이광호
     # nameEn: # cSpell: disable-line
-    # department:
-    # researchArea:
+    # departmentEn:
+    # departmentKo:
+    # researchAreaEn:
+    # researchAreaKo:
 
   - uid: 이도현
     nameKo: 이도현
     # nameEn: # cSpell: disable-line
-    # department:
-    # researchArea:
+    # departmentEn:
+    # departmentKo:
+    # researchAreaEn:
+    # researchAreaKo:
 
   - uid: 이태훈
     nameKo: 이태훈
     # nameEn: # cSpell: disable-line
-    # department:
-    # researchArea:
+    # departmentEn:
+    # departmentKo:
+    # researchAreaEn:
+    # researchAreaKo:
 
   - uid: 장문경
     nameKo: 장문경
     nameEn: Moonkyoung Jang # cSpell: disable-line
-    department: Computer Engineering
-    researchArea: Diffusion Models / Controllable Image Generation
+    departmentEn: Computer Engineering
+    departmentKo: 컴퓨터공학
+    researchAreaEn: Diffusion Models / Controllable Image Generation
+    researchAreaKo: 확산 모델 / 제어 가능한 이미지 생성
 
   - uid: 홍진우
     nameKo: 홍진우
     # nameEn: # cSpell: disable-line
-    # department:
-    # researchArea:
+    # departmentEn:
+    # departmentKo:
+    # researchAreaEn:
+    # researchAreaKo:

@@ -1,7 +1,7 @@
 import hongik_logotype from "./hongik_logotype.svg"
 import Image from "next/image"
 
-export default function Footer() {
+export default function Footer({ hongikLogoAlt }: { hongikLogoAlt: string }) {
   return (
     <footer className="flex h-24 items-center justify-center bg-hongik-black text-center text-sm text-hongik-white selection:bg-hongik-white selection:text-hongik-black!">
       <div className="flex size-full max-w-350 items-center justify-between px-6">
@@ -10,7 +10,7 @@ export default function Footer() {
           <span className="mx-2 text-xl font-bold">@</span>
           <Image
             src={hongik_logotype}
-            alt="Hongik logotype"
+            alt={hongikLogoAlt}
             width={321}
             height={98}
             className="aspect-321/98 w-28"

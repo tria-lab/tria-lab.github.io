@@ -1,3 +1,4 @@
+import type { Locale } from "@/i18n/config"
 import fs from "fs"
 import { load } from "js-yaml"
 import { parse } from "path"
@@ -10,8 +11,10 @@ const baseMemberSchema = z.object({
 })
 
 const studentSchema = baseMemberSchema.extend({
-  department: z.string().optional(),
-  researchArea: z.string().optional(),
+  departmentEn: z.string().optional(),
+  departmentKo: z.string().optional(),
+  researchAreaEn: z.string().optional(),
+  researchAreaKo: z.string().optional(),
   github: z.url().optional(),
 })
 
@@ -27,6 +30,20 @@ const teamSchema = z.object({
 
 export type TeamData = z.infer<typeof teamSchema>
 export type TeamMember = TeamData["professors"][number] | TeamData["students"][number]
+
+export function getMemberName(member: TeamMember, lang: Locale) {
+  return lang === "en" ? (member.nameEn ?? member.nameKo) : member.nameKo
+}
+
+export function getMemberDepartment(member: TeamMember, lang: Locale) {
+  if (!("departmentEn" in member)) return
+  return lang === "en" ? member.departmentEn : member.departmentKo
+}
+
+export function getMemberResearchArea(member: TeamMember, lang: Locale) {
+  if (!("researchAreaEn" in member)) return
+  return lang === "en" ? member.researchAreaEn : member.researchAreaKo
+}
 
 export function getTeam(): TeamData {
   const data = teamSchema.parse(load(fs.readFileSync("src/content/team.yaml", "utf8")))

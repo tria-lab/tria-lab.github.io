@@ -1,29 +1,36 @@
 "use client"
 
+import { type Locale, localePath } from "@/i18n/config"
 import { cn } from "@/lib/utils"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useState, useEffect } from "react"
+import { useTranslation } from "react-i18next"
 
 const navLinks = [
-  { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
-  { href: "/team", label: "Team" },
-  { href: "/publications", label: "Publications" },
-  { href: "/blog", label: "Blog" },
-  { href: "/news", label: "News" },
-  { href: "/contact", label: "Contact" },
-]
+  { href: "/", label: "home" },
+  { href: "/about", label: "about" },
+  { href: "/team", label: "team" },
+  { href: "/publications", label: "publications" },
+  { href: "/blog", label: "blog" },
+  { href: "/news", label: "news" },
+  { href: "/contact", label: "contact" },
+] as const satisfies { href: string; label: string }[]
 
-export default function Navbar() {
+export default function Navbar({ lang }: { lang: Locale }) {
+  const { t } = useTranslation()
   const pathname = usePathname()
   const [isOpen, setIsOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
 
   const isActive = (href: string) => {
     const normalize = (path: string) => path.split("?")[0].split("#")[0].replace(/\/$/, "") || "/"
-    return normalize(pathname) === normalize(href)
+    return normalize(pathname) === normalize(localePath(lang, href))
   }
+
+  const alternateLang: Locale = lang === "en" ? "ko" : "en"
+  const pathWithoutLocale = pathname.replace(/^\/(en|ko)(?=\/|$)/, "") || "/"
+  const alternatePath = localePath(alternateLang, pathWithoutLocale)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -54,7 +61,7 @@ export default function Navbar() {
       >
         <div className="mx-auto flex h-full max-w-350 items-center justify-between px-6">
           <Link
-            href="/"
+            href={localePath(lang)}
             className="text-xl font-bold text-hongik-black hover:text-hongik-medium-blue"
           >
             [LOGO] TRIA LAB
@@ -66,7 +73,7 @@ export default function Navbar() {
               {navLinks.map((link) => (
                 <li key={link.href}>
                   <Link
-                    href={link.href}
+                    href={localePath(lang, link.href)}
                     className={cn(
                       "group relative py-2 font-medium no-underline transition-colors",
                       isActive(link.href)
@@ -74,7 +81,7 @@ export default function Navbar() {
                         : "text-hongik-black hover:text-hongik-medium-blue",
                     )}
                   >
-                    {link.label}
+                    {t(`nav.${link.label}`)}
                     <span
                       className={cn(
                         "absolute bottom-0 left-0 h-0.5 bg-hongik-medium-blue transition-all duration-300",
@@ -87,10 +94,20 @@ export default function Navbar() {
             </ul>
           </nav>
 
+          <Link
+            href={alternatePath}
+            hrefLang={alternateLang}
+            lang={alternateLang}
+            aria-label={t("nav.switchTo", { language: t(`language.${alternateLang}`) })}
+            className="hidden rounded-sm border border-hongik-light-gray px-2.5 py-1.5 text-sm font-medium no-underline transition-colors hover:border-hongik-medium-blue hover:text-hongik-medium-blue lg:block"
+          >
+            {alternateLang === "ko" ? "한국어" : "English"}
+          </Link>
+
           <button
             onClick={() => setIsOpen(!isOpen)}
             className="flex cursor-pointer flex-col gap-1.5 border-none bg-none p-2 lg:hidden"
-            aria-label="Toggle navigation menu"
+            aria-label={t("nav.toggle")}
             aria-expanded={isOpen}
           >
             <span
@@ -134,7 +151,7 @@ export default function Navbar() {
             {navLinks.map((link) => (
               <li key={link.href}>
                 <Link
-                  href={link.href}
+                  href={localePath(lang, link.href)}
                   onClick={() => setIsOpen(false)}
                   className={cn(
                     "block rounded-sm px-4 py-2 font-medium no-underline transition-colors",
@@ -143,10 +160,21 @@ export default function Navbar() {
                       : "text-hongik-black hover:bg-[#f7fafc] hover:text-hongik-medium-blue",
                   )}
                 >
-                  {link.label}
+                  {t(`nav.${link.label}`)}
                 </Link>
               </li>
             ))}
+            <li className="mt-2 border-t border-hongik-light-gray pt-4">
+              <Link
+                href={alternatePath}
+                hrefLang={alternateLang}
+                lang={alternateLang}
+                onClick={() => setIsOpen(false)}
+                className="block rounded-sm px-4 py-2 font-medium no-underline transition-colors hover:bg-[#f7fafc] hover:text-hongik-medium-blue"
+              >
+                {alternateLang === "ko" ? "한국어" : "English"}
+              </Link>
+            </li>
           </ul>
         </div>
       </nav>
