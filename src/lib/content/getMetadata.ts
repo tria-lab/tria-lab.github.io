@@ -19,7 +19,10 @@ export function getDirMetadata(lang: Locale, dir: string): Metadata[] {
     .readdirSync(`src/content/${lang}/${dir}/`)
     .filter((file) => file.endsWith(".md"))
     .map((filename) => getFileMetadata(lang, `${dir}/${filename.slice(0, -3)}`))
-    .sort((a, b) => new Date(b.date ?? 0).getTime() - new Date(a.date ?? 0).getTime())
+    .sort((a, b) => {
+      const dateDifference = new Date(b.date).getTime() - new Date(a.date).getTime()
+      return dateDifference || b.slug.localeCompare(a.slug)
+    })
 }
 
 export function getFileMetadata(lang: Locale, filepath: string) {

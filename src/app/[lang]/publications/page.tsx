@@ -1,11 +1,9 @@
 import { A } from "@/components/Link"
 import { formatDate, getTranslation, hasLocale, localePath } from "@/i18n/config"
 import { localizedMetadata } from "@/i18n/metadata"
-import fs from "fs"
-import { load } from "js-yaml"
+import { getPublications } from "@/lib/content/getPublications"
 import { Rss } from "lucide-react"
 import type { Metadata } from "next"
-import { z } from "zod"
 
 export async function generateMetadata({
   params,
@@ -16,22 +14,11 @@ export async function generateMetadata({
   return localizedMetadata({ lang, title: t("page.publications"), path: "/publications" })
 }
 
-const publicationSchema = z.object({
-  titleEn: z.string().min(1),
-  titleKo: z.string().min(1),
-  authorsEn: z.string(),
-  authorsKo: z.string(),
-  date: z.string(),
-  link: z.url(),
-})
-
 export default async function Publications({ params }: PageProps<"/[lang]/publications">) {
   const { lang } = await params
   if (!hasLocale(lang)) return null
   const { t } = await getTranslation(lang)
-  const publications = z
-    .array(publicationSchema)
-    .parse(load(fs.readFileSync("src/content/publications.yaml", "utf8")))
+  const publications = getPublications()
 
   return (
     <div className="mx-auto max-w-4xl px-6 py-12">

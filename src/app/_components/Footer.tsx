@@ -3,8 +3,8 @@ import Image from "next/image"
 
 export default function Footer({ hongikLogoAlt }: { hongikLogoAlt: string }) {
   return (
-    <footer className="flex h-24 items-center justify-center bg-hongik-black text-center text-sm text-hongik-white selection:bg-hongik-white selection:text-hongik-black!">
-      <div className="flex size-full max-w-350 items-center justify-between px-6">
+    <footer className="flex min-h-24 items-center justify-center bg-hongik-black text-center text-sm text-hongik-white selection:bg-hongik-white selection:text-hongik-black!">
+      <div className="flex w-full max-w-350 flex-col items-center justify-between gap-5 p-6 sm:flex-row">
         <div className="flex items-center">
           <span className="text-xl font-bold text-hongik-white">[LOGO] TRIA LAB</span>
           <span className="mx-2 text-xl font-bold">@</span>
@@ -16,7 +16,9 @@ export default function Footer({ hongikLogoAlt }: { hongikLogoAlt: string }) {
             className="aspect-321/98 w-28"
           />
         </div>
-        <div>© {new Date().getFullYear()} TRIA Lab. All rights reserved.</div>
+        <div className="text-center sm:text-right">
+          © {new Date().getFullYear()} TRIA Lab. All rights reserved.
+        </div>
       </div>
     </footer>
   )

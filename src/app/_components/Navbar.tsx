@@ -141,6 +141,8 @@ export default function Navbar({ lang }: { lang: Locale }) {
       />
 
       <nav
+        aria-hidden={!isOpen}
+        inert={!isOpen}
         className={cn(
           "fixed inset-y-0 right-0 z-50 w-64 transform bg-white shadow-xl transition-transform duration-300",
           isOpen ? "translate-x-0" : "translate-x-full",

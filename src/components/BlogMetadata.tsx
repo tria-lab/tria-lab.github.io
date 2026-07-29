@@ -43,10 +43,10 @@ export default async function BlogMetadata({ metadata, lang, className = "" }: B
                     {imageSrc && (
                       <Image
                         src={imageSrc}
-                        alt={getMemberName(author, lang)}
+                        alt=""
                         width={20}
                         height={20}
-                        className="rounded-full"
+                        className="size-5 shrink-0 rounded-full object-cover"
                       />
                     )}
                   </Link>
