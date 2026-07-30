@@ -22,6 +22,7 @@ export async function generateMetadata({
   const post = getMdContent(lang, `blog/${slug}`)
 
   if (!post) return {}
+  const metadata = getFileMetadata(lang, `blog/${slug}`)
 
   return localizedMetadata({
     lang,
@@ -29,6 +30,8 @@ export async function generateMetadata({
     path: `/blog/${slug}`,
     description: post.data.excerpt,
     type: "article",
+    publishedTime: metadata.date,
+    authors: metadata.authors,
   })
 }
 
