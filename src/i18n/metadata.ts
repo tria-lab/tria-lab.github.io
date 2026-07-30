@@ -8,6 +8,7 @@ export function localizedMetadata(
     title: string
     path?: string
     description?: string
+    imagePath?: string
   } & (
     | {
         type: "article"
@@ -22,7 +23,7 @@ export function localizedMetadata(
   ),
 ) {
   const { lang, title } = options
-  const { path = "/", ...openGraphOptions } = options
+  const { path = "/", imagePath, ...openGraphOptions } = options
 
   return {
     title: pageTitle(title),
@@ -34,6 +35,10 @@ export function localizedMetadata(
         "x-default": localePath("en", path),
       },
     },
-    openGraph: openGraph({ ...openGraphOptions, url: localePath(lang, path) }),
+    openGraph: openGraph({
+      ...openGraphOptions,
+      url: localePath(lang, path),
+      ...(imagePath && { imagePath: localePath(lang, imagePath) }),
+    }),
   } as const satisfies Metadata
 }

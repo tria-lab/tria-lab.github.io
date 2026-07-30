@@ -48,6 +48,7 @@ export async function generateMetadata({
     lang,
     title: `${name} | ${t("page.team")}`,
     path: `/team/${member.uid}`,
+    imagePath: `/team/${member.uid}/opengraph-image`,
     description: lang === "ko" ? member.nameEn : member.nameKo,
   })
 }

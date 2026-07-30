@@ -1,4 +1,5 @@
 import { siteConfig } from "./config"
+import { openGraphImageSize } from "@/components/OpenGraphImage"
 import type { Locale } from "@/i18n/config"
 import { clsx, type ClassValue } from "clsx"
 import type { Metadata } from "next"
@@ -22,6 +23,7 @@ export function openGraph({
   title,
   description,
   url,
+  imagePath,
   type,
   publishedTime,
   authors,
@@ -30,6 +32,7 @@ export function openGraph({
   title: string
   description?: string
   url?: string
+  imagePath?: string
 } & (
   | {
       type: "article"
@@ -48,7 +51,15 @@ export function openGraph({
     ...(url && { url }),
     locale: openGraphLocales[lang],
     alternateLocale: lang === "en" ? openGraphLocales.ko : openGraphLocales.en,
-  } as const
+    images: [
+      {
+        url: imagePath || `/${lang}/opengraph-image`,
+        ...openGraphImageSize,
+        type: "image/png",
+        alt: url === `/${lang}` ? siteConfig.description : `${title} — ${siteConfig.title}`,
+      },
+    ],
+  } as const satisfies Metadata["openGraph"]
 
   if (type === "article") {
     return {

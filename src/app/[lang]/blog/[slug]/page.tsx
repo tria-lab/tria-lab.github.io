@@ -28,6 +28,7 @@ export async function generateMetadata({
     lang,
     title: post.data.title,
     path: `/blog/${slug}`,
+    imagePath: `/blog/${slug}/opengraph-image`,
     description: post.data.excerpt,
     type: "article",
     publishedTime: metadata.date,
