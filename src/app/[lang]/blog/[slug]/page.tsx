@@ -1,4 +1,5 @@
 import BlogMetadata from "@/components/BlogMetadata"
+import JsonLd, { postJsonLd } from "@/components/JsonLd"
 import Markdown from "@/components/Markdown"
 import { ShareMenu } from "@/components/ShareMenu"
 import { hasLocale } from "@/i18n/config"
@@ -44,15 +45,21 @@ export default async function BlogPost({
   if (!hasLocale(lang)) return null
   const post = getMdContent(lang, `blog/${slug}`)
   const metadata = getFileMetadata(lang, `blog/${slug}`)
-  const date = slug.match(/^(\d{4}-\d{2}-\d{2})/)![1]
+  const jsonLd = postJsonLd({
+    lang,
+    section: "blog",
+    slug,
+    metadata,
+  })
 
   return (
     <article className="mx-auto max-w-4xl px-6 py-12">
+      <JsonLd data={jsonLd} />
       <ViewTransition name={`blog-title-${slug}`}>
         <h1 className="mb-1 text-4xl font-bold">{post.data.title}</h1>
       </ViewTransition>
       <ViewTransition name={`blog-meta-${slug}`}>
-        <BlogMetadata metadata={{ ...metadata, date }} lang={lang} className="mb-8" />
+        <BlogMetadata metadata={metadata} lang={lang} className="mb-8" />
       </ViewTransition>
       <ShareMenu lang={lang} section="blog" slug={slug} />
       <Markdown lang={lang}>{post.content}</Markdown>

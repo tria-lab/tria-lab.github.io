@@ -1,7 +1,10 @@
 import BlogMetadata from "@/components/BlogMetadata"
+import JsonLd from "@/components/JsonLd"
 import { A } from "@/components/Link"
 import { getTranslation, hasLocale, localePath, locales } from "@/i18n/config"
 import { localizedMetadata } from "@/i18n/metadata"
+import { siteConfig } from "@/lib/config"
+import { getContact } from "@/lib/content/getContact"
 import { getDirMetadata } from "@/lib/content/getMetadata"
 import {
   getMemberDepartment,
@@ -18,6 +21,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { ViewTransition } from "react"
+import type { Person, WithContext } from "schema-dts"
 
 export async function generateStaticParams() {
   const { professors, students } = getTeam()
@@ -69,9 +73,36 @@ export default async function TeamMemberPage({
   const posts = getDirMetadata(lang, "blog").filter(
     (post) => post.authors.includes(member.uid) || post.authors.includes(member.nameKo),
   )
+  const { addressEn, addressKo } = getContact()
+  const profileUrl = `${siteConfig.url}${localePath(lang, `/team/${member.uid}`)}`
+  const sameAs = [
+    "github" in member ? member.github : undefined,
+    "googleScholar" in member ? member.googleScholar : undefined,
+  ].filter((url): url is string => Boolean(url))
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": `${siteConfig.url}/#person-${encodeURIComponent(member.uid)}`,
+    name,
+    url: profileUrl,
+    jobTitle: t(isProfessor ? "team.professor" : "team.student"),
+    worksFor: {
+      "@type": "ResearchOrganization",
+      "@id": `${siteConfig.url}/#organization`,
+      name: siteConfig.title,
+    },
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: lang === "en" ? addressEn : addressKo,
+      addressCountry: "KR",
+    },
+    ...(sameAs.length > 0 ? { sameAs } : {}),
+    ...(imageSrc ? { image: `${siteConfig.url}${imageSrc}` } : {}),
+  } as const satisfies WithContext<Person>
 
   return (
     <div className="mx-auto max-w-4xl px-6 py-12">
+      <JsonLd data={jsonLd} />
       <Link
         href={localePath(lang, "/team")}
         className="mb-6 inline-flex items-center gap-1 text-sm text-zinc-500 hover:text-hongik-medium-blue hover:underline"

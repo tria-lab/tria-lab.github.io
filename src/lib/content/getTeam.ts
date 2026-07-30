@@ -64,6 +64,11 @@ export function getTeamMemberById(id: string): TeamMember | undefined {
   return [...professors, ...students].find((member) => member.uid === id || member.nameKo === id)
 }
 
+export function getTeamMemberByUid(uid: string): TeamMember | undefined {
+  const { professors, students } = getTeam()
+  return [...professors, ...students].find((member) => member.uid === uid)
+}
+
 export function getTeamMemberImage(uid: string): string | undefined {
   const matches = fs.readdirSync("public/team").filter((f) => parse(f).name === uid)
 
