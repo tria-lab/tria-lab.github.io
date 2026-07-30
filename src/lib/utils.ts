@@ -1,5 +1,4 @@
 import { siteConfig } from "./config"
-import { IMAGE_HEIGHT, IMAGE_WIDTH } from "@/app/[lang]/opengraph-image.png/route"
 import type { Locale } from "@/i18n/config"
 import { clsx, type ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
@@ -31,6 +30,5 @@ export function openGraph({
     ...(url && { url }),
     ...(type && { type }),
     locale: lang,
-    images: [{ url: `/${lang}/opengraph-image.png`, width: IMAGE_WIDTH, height: IMAGE_HEIGHT }],
   }
 }
