@@ -2,10 +2,8 @@ import ContactMap from "./ContactMap"
 import { A } from "@/components/Link"
 import { getTranslation, hasLocale } from "@/i18n/config"
 import { localizedMetadata } from "@/i18n/metadata"
-import fs from "fs"
-import { load } from "js-yaml"
+import { getContact } from "@/lib/content/getContact"
 import type { Metadata } from "next"
-import { z } from "zod"
 
 export async function generateMetadata({
   params,
@@ -16,19 +14,11 @@ export async function generateMetadata({
   return localizedMetadata({ lang, title: t("page.contact"), path: "/contact" })
 }
 
-const contactSchema = z.object({
-  addressEn: z.string(),
-  addressKo: z.string(),
-  email: z.email(),
-})
-
 export default async function Contact({ params }: PageProps<"/[lang]/contact">) {
   const { lang } = await params
   if (!hasLocale(lang)) return null
   const { t } = await getTranslation(lang)
-  const { addressEn, addressKo, email } = contactSchema.parse(
-    load(fs.readFileSync("src/content/contact.yaml", "utf8")),
-  )
+  const { addressEn, addressKo, email } = getContact()
   const address = lang === "en" ? addressEn : addressKo
 
   return (
