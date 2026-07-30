@@ -10,4 +10,16 @@ bun run fmt:check
 bun run test
 bun run lint
 bun run build
+
+# non-empty output assertions
+test -s out/index.html
+test -s out/en/index.html
+test -s out/ko/index.html
+test -s out/sitemap.xml
+test -s out/robots.txt
+test -s out/favicon.svg
+test -s out/en/blog.xml
+test -s out/ko/blog.xml
+test -s out/en/news.xml
+test -s out/ko/news.xml
 '''
