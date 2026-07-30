@@ -11,6 +11,7 @@
     "fmt:check": "prettier -l ."
   },
   "dependencies": {
+    "@base-ui/react": "1.6.0",
     "@icons-pack/react-simple-icons": "13.13.0",
     "@shikijs/rehype": "4.0.2",
     "@stefanprobst/rehype-shiki": "2.2.1",

@@ -1,3 +1,4 @@
+import Breadcrumbs from "@/components/Breadcrumbs"
 import { A } from "@/components/Link"
 import { formatDate, getTranslation, hasLocale, localePath } from "@/i18n/config"
 import { localizedMetadata } from "@/i18n/metadata"
@@ -22,6 +23,13 @@ export default async function Publications({ params }: PageProps<"/[lang]/public
 
   return (
     <div className="mx-auto max-w-4xl px-6 py-12">
+      <Breadcrumbs
+        lang={lang}
+        items={[
+          { name: t("page.home"), path: "/" },
+          { name: t("page.publications"), path: "/publications" },
+        ]}
+      />
       <h1 className="mb-8 text-4xl font-bold">
         {t("page.publications")}{" "}
         <A target="_blank" href={localePath(lang, "/publications.xml")} className="text-zinc-500">

@@ -1,8 +1,9 @@
 import BlogMetadata from "@/components/BlogMetadata"
+import Breadcrumbs from "@/components/Breadcrumbs"
 import JsonLd, { postJsonLd } from "@/components/JsonLd"
 import Markdown from "@/components/Markdown"
 import { ShareMenu } from "@/components/ShareMenu"
-import { hasLocale } from "@/i18n/config"
+import { getTranslation, hasLocale } from "@/i18n/config"
 import { localizedMetadata } from "@/i18n/metadata"
 import getMdContent from "@/lib/content/getContent"
 import { getDirMetadata, getFileMetadata } from "@/lib/content/getMetadata"
@@ -45,6 +46,7 @@ export default async function BlogPost({
   if (!hasLocale(lang)) return null
   const post = getMdContent(lang, `blog/${slug}`)
   const metadata = getFileMetadata(lang, `blog/${slug}`)
+  const { t } = await getTranslation(lang)
   const jsonLd = postJsonLd({
     lang,
     section: "blog",
@@ -55,6 +57,14 @@ export default async function BlogPost({
   return (
     <article className="mx-auto max-w-4xl px-6 py-12">
       <JsonLd data={jsonLd} />
+      <Breadcrumbs
+        lang={lang}
+        items={[
+          { name: t("page.home"), path: "/" },
+          { name: t("page.blog"), path: "/blog" },
+          { name: post.data.title, path: `/blog/${slug}` },
+        ]}
+      />
       <ViewTransition name={`blog-title-${slug}`}>
         <h1 className="mb-1 text-4xl font-bold">{post.data.title}</h1>
       </ViewTransition>

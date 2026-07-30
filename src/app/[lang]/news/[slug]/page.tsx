@@ -1,7 +1,8 @@
+import Breadcrumbs from "@/components/Breadcrumbs"
 import JsonLd, { postJsonLd } from "@/components/JsonLd"
 import Markdown from "@/components/Markdown"
 import { ShareMenu } from "@/components/ShareMenu"
-import { formatDate, hasLocale } from "@/i18n/config"
+import { formatDate, getTranslation, hasLocale } from "@/i18n/config"
 import { localizedMetadata } from "@/i18n/metadata"
 import getMdContent from "@/lib/content/getContent"
 import { getDirMetadata, getFileMetadata } from "@/lib/content/getMetadata"
@@ -43,6 +44,7 @@ export default async function NewsPost({
   if (!hasLocale(lang)) return null
   const post = getMdContent(lang, `news/${slug}`)
   const metadata = getFileMetadata(lang, `news/${slug}`)
+  const { t } = await getTranslation(lang)
   const jsonLd = postJsonLd({
     lang,
     section: "news",
@@ -53,6 +55,14 @@ export default async function NewsPost({
   return (
     <article className="mx-auto max-w-4xl px-6 py-12">
       <JsonLd data={jsonLd} />
+      <Breadcrumbs
+        lang={lang}
+        items={[
+          { name: t("page.home"), path: "/" },
+          { name: t("page.news"), path: "/news" },
+          { name: post.data.title, path: `/news/${slug}` },
+        ]}
+      />
       <ViewTransition name={`news-title-${slug}`}>
         <h1 className="mb-1 text-4xl font-bold">{post.data.title}</h1>
       </ViewTransition>

@@ -1,4 +1,5 @@
 import BlogMetadata from "@/components/BlogMetadata"
+import Breadcrumbs from "@/components/Breadcrumbs"
 import JsonLd from "@/components/JsonLd"
 import { A } from "@/components/Link"
 import { getTranslation, hasLocale, localePath, locales } from "@/i18n/config"
@@ -18,7 +19,6 @@ import { SiGooglescholar, SiGithub } from "@icons-pack/react-simple-icons"
 import { ArrowRight, Mail, User } from "lucide-react"
 import type { Metadata } from "next"
 import Image from "next/image"
-import Link from "next/link"
 import { notFound } from "next/navigation"
 import { ViewTransition } from "react"
 import type { Person, WithContext } from "schema-dts"
@@ -103,12 +103,14 @@ export default async function TeamMemberPage({
   return (
     <div className="mx-auto max-w-4xl px-6 py-12">
       <JsonLd data={jsonLd} />
-      <Link
-        href={localePath(lang, "/team")}
-        className="mb-6 inline-flex items-center gap-1 text-sm text-zinc-500 hover:text-hongik-medium-blue hover:underline"
-      >
-        ← {t("team.back")}
-      </Link>
+      <Breadcrumbs
+        lang={lang}
+        items={[
+          { name: t("page.home"), path: "/" },
+          { name: t("page.team"), path: "/team" },
+          { name, path: `/team/${member.uid}` },
+        ]}
+      />
 
       <div className="flex flex-col gap-8 md:flex-row">
         <div className="w-full max-w-75 shrink-0 rounded-sm border border-black/20">

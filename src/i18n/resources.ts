@@ -58,6 +58,7 @@ export const resources = {
         contactBody: "Prospective students and research collaborators are welcome to get in touch.",
       },
       common: {
+        breadcrumb: "Breadcrumb",
         read: "Read",
         copyLink: "Copy link",
         copied: "Link copied to clipboard",
@@ -161,6 +162,7 @@ export const resources = {
         contactBody: "합류를 희망하는 학생과 연구 협력에 관심 있는 분들의 연락을 기다립니다.",
       },
       common: {
+        breadcrumb: "현재 위치",
         read: "읽기",
         copyLink: "링크 복사",
         copied: "링크를 클립보드에 복사했습니다",
