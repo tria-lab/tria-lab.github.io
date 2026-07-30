@@ -1,4 +1,4 @@
-import { localePath, type Locale } from "@/i18n/config"
+import { localePath, localeStaticFilePath, type Locale } from "@/i18n/config"
 import { siteConfig } from "@/lib/config"
 import type { Metadata as PostMetadata } from "@/lib/content/getMetadata"
 import type { Publication } from "@/lib/content/getPublications"
@@ -17,6 +17,10 @@ export function postJsonLd({
   metadata: PostMetadata
 }) {
   const postUrl = `${siteConfig.url}${localePath(lang, `/${section}/${slug}`)}`
+  const imageUrl = `${siteConfig.url}${localeStaticFilePath(
+    lang,
+    `/${section}/${slug}/opengraph-image`,
+  )}`
   const authors = metadata.authors.map((author) => {
     const member = getTeamMemberByUid(author)
     return {
@@ -36,6 +40,7 @@ export function postJsonLd({
     wordCount: metadata.wordCount,
     timeRequired: `PT${metadata.readingTime}M`,
     mainEntityOfPage: postUrl,
+    image: imageUrl,
     ...(authors.length > 0 ? { author: authors } : {}),
     publisher: { "@id": `${siteConfig.url}/#organization` },
   } as const satisfies WithContext<Article | BlogPosting>

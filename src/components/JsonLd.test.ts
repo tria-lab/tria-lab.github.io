@@ -2,23 +2,40 @@ import { postJsonLd, publicationJsonLd } from "@/components/JsonLd"
 import { describe, expect, test } from "bun:test"
 
 describe("postJsonLd", () => {
-  test("uses the same trailing-slash URL as Next.js canonical metadata", () => {
+  const metadata = {
+    slug: "2026-01-02-example",
+    title: "Example",
+    date: "2026-01-02",
+    excerpt: "Example post",
+    wordCount: 100,
+    readingTime: 1,
+    authors: [],
+  }
+
+  test("builds BlogPosting URLs from the canonical page and generated OG image", () => {
     const data = postJsonLd({
       lang: "en",
       section: "blog",
       slug: "2026-01-02-example",
-      metadata: {
-        slug: "2026-01-02-example",
-        title: "Example",
-        date: "2026-01-02",
-        excerpt: "Example post",
-        wordCount: 100,
-        readingTime: 1,
-        authors: [],
-      },
+      metadata,
     })
 
+    expect(data["@type"]).toBe("BlogPosting")
     expect(data.mainEntityOfPage).toBe("https://trialab.org/en/blog/2026-01-02-example/")
+    expect(data.image).toBe("https://trialab.org/en/blog/2026-01-02-example/opengraph-image")
+  })
+
+  test("builds Article URLs from the canonical page and generated OG image", () => {
+    const data = postJsonLd({
+      lang: "ko",
+      section: "news",
+      slug: "2026-01-02-example",
+      metadata,
+    })
+
+    expect(data["@type"]).toBe("Article")
+    expect(data.mainEntityOfPage).toBe("https://trialab.org/ko/news/2026-01-02-example/")
+    expect(data.image).toBe("https://trialab.org/ko/news/2026-01-02-example/opengraph-image")
   })
 })
 
