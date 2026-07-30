@@ -1,10 +1,14 @@
 "use client"
 
-import type { Locale } from "@/i18n/config"
+import { localePath, type Locale } from "@/i18n/config"
 import { siteConfig } from "@/lib/config"
 import { Link2 } from "lucide-react"
 import { useTranslation } from "react-i18next"
 import { toast } from "sonner"
+
+export function getShareUrl(lang: Locale, section: "blog" | "news", slug: string) {
+  return `${siteConfig.url}${localePath(lang, `/${section}/${slug}`)}`
+}
 
 export function ShareMenu({
   lang,
@@ -21,7 +25,7 @@ export function ShareMenu({
     <div className="my-8 flex items-center gap-2">
       <button
         onClick={() => {
-          void navigator.clipboard.writeText(`${siteConfig.url}/${lang}/${section}/${slug}`)
+          void navigator.clipboard.writeText(getShareUrl(lang, section, slug))
           toast.success(t("common.copied"))
         }}
         className="inline-flex cursor-pointer items-center gap-2 rounded-lg px-3 py-2 text-sm text-zinc-600 transition-colors hover:bg-zinc-100 hover:text-zinc-900"

@@ -1,5 +1,26 @@
-import { publicationJsonLd } from "@/components/JsonLd"
+import { postJsonLd, publicationJsonLd } from "@/components/JsonLd"
 import { describe, expect, test } from "bun:test"
+
+describe("postJsonLd", () => {
+  test("uses the same trailing-slash URL as Next.js canonical metadata", () => {
+    const data = postJsonLd({
+      lang: "en",
+      section: "blog",
+      slug: "2026-01-02-example",
+      metadata: {
+        slug: "2026-01-02-example",
+        title: "Example",
+        date: "2026-01-02",
+        excerpt: "Example post",
+        wordCount: 100,
+        readingTime: 1,
+        authors: [],
+      },
+    })
+
+    expect(data.mainEntityOfPage).toBe("https://trialab.org/en/blog/2026-01-02-example/")
+  })
+})
 
 describe("publicationJsonLd", () => {
   test("builds localized ScholarlyArticle structured data", () => {

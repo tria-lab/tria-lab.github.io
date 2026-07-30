@@ -1,6 +1,6 @@
 import { siteConfig } from "./config"
 import { openGraphImageSize } from "@/components/OpenGraphImage"
-import type { Locale } from "@/i18n/config"
+import { localePath, type Locale } from "@/i18n/config"
 import { clsx, type ClassValue } from "clsx"
 import type { Metadata } from "next"
 import { twMerge } from "tailwind-merge"
@@ -56,7 +56,7 @@ export function openGraph({
         url: imagePath || `/${lang}/opengraph-image`,
         ...openGraphImageSize,
         type: "image/png",
-        alt: url === `/${lang}` ? siteConfig.description : `${title} — ${siteConfig.title}`,
+        alt: url === localePath(lang) ? siteConfig.description : `${title} — ${siteConfig.title}`,
       },
     ],
   } as const satisfies Metadata["openGraph"]

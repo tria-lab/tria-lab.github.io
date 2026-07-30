@@ -8,8 +8,24 @@ export function hasLocale(value: string): value is Locale {
   return locales.includes(value as Locale)
 }
 
-export function localePath(lang: Locale, path = "/") {
+function localizedPath(lang: Locale, path: string) {
   return path === "/" ? `/${lang}` : `/${lang}${path.startsWith("/") ? path : `/${path}`}`
+}
+
+export function localePath(lang: Locale, path = "/") {
+  const suffixIndex = path.search(/[?#]/)
+  const pathname = suffixIndex === -1 ? path : path.slice(0, suffixIndex)
+  const suffix = suffixIndex === -1 ? "" : path.slice(suffixIndex)
+  const localized = localizedPath(lang, pathname).replace(/\/+$/, "")
+
+  // next.config.ts enables trailingSlash, so page URLs must match Next's slash-terminated
+  // canonicals. Next exempts static files; extensionless generated files use the helper below.
+  const isStaticFile = /\/[^/]+\.[^/]+$/.test(pathname)
+  return `${localized}${isStaticFile ? "" : "/"}${suffix}`
+}
+
+export function localeStaticFilePath(lang: Locale, path: string) {
+  return localizedPath(lang, path).replace(/\/+$/, "")
 }
 
 export async function getTranslation(lang: Locale) {

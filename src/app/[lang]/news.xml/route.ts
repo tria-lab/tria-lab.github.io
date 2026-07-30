@@ -31,7 +31,7 @@ export async function GET(_request: Request, { params }: { params: Promise<{ lan
 
   for (const post of posts) {
     const { content } = getMdContent(lang, `news/${post.slug}`)
-    const postUrl = `${feedUrl}/${post.slug}`
+    const postUrl = `${siteUrl}${localePath(lang, `/news/${post.slug}`)}`
     feed.addItem({
       title: post.title,
       id: postUrl,

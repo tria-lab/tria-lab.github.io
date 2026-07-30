@@ -1,4 +1,4 @@
-import { type Locale, localePath } from "./config"
+import { type Locale, localePath, localeStaticFilePath } from "./config"
 import { openGraph, pageTitle } from "@/lib/utils"
 import type { Metadata } from "next"
 
@@ -38,7 +38,7 @@ export function localizedMetadata(
     openGraph: openGraph({
       ...openGraphOptions,
       url: localePath(lang, path),
-      ...(imagePath && { imagePath: localePath(lang, imagePath) }),
+      ...(imagePath && { imagePath: localeStaticFilePath(lang, imagePath) }),
     }),
   } as const satisfies Metadata
 }
