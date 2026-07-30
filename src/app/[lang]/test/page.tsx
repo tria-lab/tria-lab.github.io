@@ -9,7 +9,10 @@ export async function generateMetadata({ params }: PageProps<"/[lang]/test">): P
   const { lang } = await params
   if (!hasLocale(lang)) return {}
   const { t } = await getTranslation(lang)
-  return localizedMetadata({ lang, title: t("page.test"), path: "/test" })
+  return {
+    ...localizedMetadata({ lang, title: t("page.test"), path: "/test" }),
+    robots: { index: false, follow: true },
+  }
 }
 
 export default async function Test({ params }: PageProps<"/[lang]/test">) {
