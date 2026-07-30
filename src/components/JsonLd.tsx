@@ -1,8 +1,9 @@
 import { localePath, type Locale } from "@/i18n/config"
 import { siteConfig } from "@/lib/config"
 import type { Metadata as PostMetadata } from "@/lib/content/getMetadata"
+import type { Publication } from "@/lib/content/getPublications"
 import { getMemberName, getTeamMemberByUid } from "@/lib/content/getTeam"
-import type { Article, BlogPosting, WithContext, Graph, Thing } from "schema-dts"
+import type { Article, BlogPosting, Graph, ScholarlyArticle, Thing, WithContext } from "schema-dts"
 
 export function postJsonLd({
   lang,
@@ -38,6 +39,30 @@ export function postJsonLd({
     ...(authors.length > 0 ? { author: authors } : {}),
     publisher: { "@id": `${siteConfig.url}/#organization` },
   } as const satisfies WithContext<Article | BlogPosting>
+}
+
+export function publicationJsonLd({
+  lang,
+  publication,
+}: {
+  lang: Locale
+  publication: Publication
+}) {
+  const authors = (lang === "en" ? publication.authorsEn : publication.authorsKo)
+    .split(",")
+    .map((name) => name.trim())
+    .filter(Boolean)
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    headline: lang === "en" ? publication.titleEn : publication.titleKo,
+    author: authors.map((name) => ({ "@type": "Person" as const, name })),
+    datePublished: publication.date.replaceAll(".", "-"),
+    inLanguage: lang,
+    mainEntityOfPage: publication.link,
+    publisher: { "@id": `${siteConfig.url}/#organization` },
+  } as const satisfies WithContext<ScholarlyArticle>
 }
 
 export default function JsonLd({ data }: { data: Graph | WithContext<Thing> }) {

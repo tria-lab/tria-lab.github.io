@@ -1,4 +1,5 @@
 import Breadcrumbs from "@/components/Breadcrumbs"
+import JsonLd, { publicationJsonLd } from "@/components/JsonLd"
 import { A } from "@/components/Link"
 import { formatDate, getTranslation, hasLocale, localePath } from "@/i18n/config"
 import { localizedMetadata } from "@/i18n/metadata"
@@ -30,6 +31,12 @@ export default async function Publications({ params }: PageProps<"/[lang]/public
           { name: t("page.publications"), path: "/publications" },
         ]}
       />
+      {publications.map((publication, index) => (
+        <JsonLd
+          key={`${publication.link}-${index}`}
+          data={publicationJsonLd({ lang, publication })}
+        />
+      ))}
       <h1 className="mb-8 text-4xl font-bold">
         {t("page.publications")}{" "}
         <A target="_blank" href={localePath(lang, "/publications.xml")} className="text-zinc-500">
